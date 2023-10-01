@@ -1,0 +1,136 @@
+.fadeIn {
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+}
+
+.scaleIn {
+    transform: scale(1.1);
+    animation-name: scaleIn;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+    @keyframes scaleIn {
+        from { transform: scale(1.1); }
+        to { transform: scale(1); }
+    }
+}
+
+.masked-entrance {
+    position: relative;
+    animation-name: masked;
+    animation-duration: 1s;
+    top: 50px;
+    animation-fill-mode: forwards;
+    @keyframes masked {
+        from { top: 50px; }
+        to { top: 0; }
+    }
+    &::after {
+        content: "";
+        position: absolute;
+        background-color: white;
+        height: 100%;
+        width: 100%;
+        transform: translateY(-100%);
+        animation-fill-mode: forwards;
+        top: 100%;
+        left: 0;
+        animation-name: slideInBottom;
+        animation-duration: 1s;
+        @keyframes slideInBottom {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+    }
+}
+
+.video-hover {
+    a {
+        //padding: 12px 22px;
+        display: inline-block;
+        position: relative;
+        //overflow: hidden;
+        text-decoration: none;
+        color: black;
+        transition: color 0.3s;
+        &::after {
+            content: "";
+            position: absolute;
+            background-color: black;
+            height: 2px;
+            width: 100%;
+            bottom: 10px;
+            left: 0;
+        }
+        &:hover {
+            color: black;
+        }
+    }
+}
+
+.cursor {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
+    contain: layout style size;
+    pointer-events: none;
+    &.media-blend {
+      z-index: 100;
+      mix-blend-mode: exclusion;
+      .cursor-media {
+        filter: invert(1);
+      }
+    }
+    .cursor-media {
+        position: relative;
+        display: block;
+        height: 350px;
+        width: 350px;
+        overflow: hidden;
+        border-radius: 100%;
+        transform: scale(0);
+        margin: -175px 0 0 -175px;
+        video {
+            position: absolute;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) scale(1.4);
+        }
+    }
+    @media (max-width: 980px) {
+        display: none;
+    }
+}
+
+.claseCerrada {
+    span { transform: translateY(-50%); }
+    span:first-child { top: 45%; }
+    span:nth-child(2) { top: 54%; }
+}
+
+.claseAbierta { 
+    span:first-child { 
+        transform: translateY(-60%) rotate(-45deg);
+        top: 50%;
+    }
+    span:nth-child(2) { 
+        transform: translateY(-60%) rotate(45deg);
+        top: 50%;
+    }
+}
+
+.d1 { animation-delay: 100ms; z-index: 1; &::after { animation-delay: 100ms; } }
+.d2 { animation-delay: 200ms; z-index: 2; &::after { animation-delay: 200ms; } }
+.d3 { animation-delay: 300ms; z-index: 3; &::after { animation-delay: 300ms; } }
+.d4 { animation-delay: 400ms; z-index: 4; &::after { animation-delay: 400ms; } }
+.d5 { animation-delay: 500ms; z-index: 5; &::after { animation-delay: 500ms; } }
+.d6 { animation-delay: 600ms; z-index: 6; &::after { animation-delay: 600ms; } }
+.d7 { animation-delay: 700ms; z-index: 7; &::after { animation-delay: 700ms; } }
+.d8 { animation-delay: 800ms; z-index: 8; &::after { animation-delay: 800ms; } }
+.d9 { animation-delay: 900ms; z-index: 9; &::after { animation-delay: 900ms; } }
