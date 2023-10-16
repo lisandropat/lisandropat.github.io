@@ -141,13 +141,14 @@ const About = () => (
         <Box 
           mt={{ base: '100px', lg: "400px" }}
           mb={{ base: "150px", lg: "300px" }}
+          ml={{ lg: '10vw' }}
           textAlign="left"
         >
           <Heading as="h3" fontSize={{ base: "36px", lg: "42px" }} fontWeight="400">
             The type of designer who's obsessed with making things harmonic, simple and obvious
           </Heading>
           <Text fontSize="21px" mt="60px" maxWidth={{ lg: "60vw" }}>
-            I like to keep my workflow clean and organized, approaching design in a systematic way, emphasizing the maintenance and scalability of every visual language I develop. Traveling is my source of inspiration: I love working remotely from around the world, meeting friendly teams from different cultures to learn from. 
+            I like to keep my workflow clean and organized, approaching design in a systematic and minimalistic way, emphasizing the maintenance and scalability of every visual language I develop. I pay careful attention to the smallest details, making sure that each element harmonizes with the overall visual identity.
           </Text>
         </Box>
       </Box>
