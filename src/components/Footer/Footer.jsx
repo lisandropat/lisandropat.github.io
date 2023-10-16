@@ -98,7 +98,7 @@ const Footer = () => (
                 color={config.backgroundColor}
                 marginTop="20px"
               >
-                © {(new Date().getFullYear())}
+                Last updated in {(new Date().getFullYear())}
               </Text>
             </Text>
           </Box>
