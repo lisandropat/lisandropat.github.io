@@ -143,7 +143,7 @@ const About = () => (
           mb={{ base: "150px", lg: "300px" }}
           textAlign="left"
         >
-          <Heading as="h3" fontSize={{ base: "36px", lg: "42px" }} fontWeight="400" maxWidth={{ lg: "80vw" }}>
+          <Heading as="h3" fontSize={{ base: "36px", lg: "42px" }} fontWeight="400" maxWidth={{ lg: "60vw" }}>
             The type of designer who's obsessed with making things harmonic, simple and obvious
           </Heading>
           <Text fontSize="21px" mt="60px" maxWidth={{ lg: "60vw" }}>
