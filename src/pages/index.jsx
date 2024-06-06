@@ -97,8 +97,8 @@ const Index = ({ data: { allDribbbleShot } }) => {
               userSelect="none"
               fontWeight={500}
             >
-              <Text as="span" className="masked-entrance">Hi,</Text> <Text as="span" className="masked-entrance d1">I'm</Text> <Text as="span" className="masked-entrance d2"><Box as="span" className="video-hover" data-video-src="lichi"><span /><Link to="/">Lichi</Link></Box>,</Text><br/>
-              <Text as="span" className="masked-entrance d3">I create</Text> <Text as="span" className="masked-entrance d4">value</Text> <Text as="span" className="masked-entrance d5">through</Text> <Text as="span" className="masked-entrance d6"><Box as="span" className="video-hover" data-video-src="design"><span /><Link to="/">design</Link></Box>.</Text>
+              <Text as="span" className="masked-entrance">Hi,</Text> <Text as="span" className="masked-entrance d1">I'm</Text> <Text as="span" className="masked-entrance d2"><Box as="span" className="video-hover" data-video-src="lichi"><span /><Link to="/about">Lichi</Link></Box>,</Text><br/>
+              <Text as="span" className="masked-entrance d3">I create</Text> <Text as="span" className="masked-entrance d4">value</Text> <Text as="span" className="masked-entrance d5">through</Text> <Text as="span" className="masked-entrance d6"><Box as="span" className="video-hover" data-video-src="design"><span /><Link to="https://www.behance.net/lisandropat" target="_blank">design</Link></Box>.</Text>
             </Heading>
             <VideoMouse />
           </Box>
