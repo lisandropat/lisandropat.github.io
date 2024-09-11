@@ -159,7 +159,7 @@ const Index = ({ data: { allDribbbleShot } }) => {
                 >
                   Get premium gear <br/>at a fraction of the price
                 </Text>
-                <Text fontSize="18px" mt="21px" display={{ base: "none", lg: 'block' }}>Read Case Study →</Text>
+                <Text fontSize="18px" mt="21px" display={{ base: "none", lg: 'block' }}>Read case study ⎯</Text>
               </Box>
             </Box>
           </Link>
@@ -210,7 +210,7 @@ const Index = ({ data: { allDribbbleShot } }) => {
                 >
                   Tracking all Esports <br/>in a single platform
                 </Text>
-                <Text fontSize="18px" mt="21px" display={{ base: "none", lg: 'block' }}>Read Case Study →</Text>
+                <Text fontSize="18px" mt="21px" display={{ base: "none", lg: 'block' }}>Read case study ⎯</Text>
               </Box>
             </Box>
           </Link>
