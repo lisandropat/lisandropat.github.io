@@ -19,7 +19,7 @@ const Logo = () => (
           fontWeight="800"
           className="fadeIn"
         >
-          Lisandro <Box display="inline-block" w="18px" h="3px" backgroundColor="black" m="0 6px 4px 6px" /> Pat
+          Lisandro ⎯ Pat
         </Heading>
     </Link>
 )
