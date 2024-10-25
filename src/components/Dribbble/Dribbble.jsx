@@ -17,25 +17,29 @@ const Node = ({ node }) => (
     <Link
         href={node.url}
         target="_blank"
-        overflow="hidden"
         mb="60px"
         role="group"
         _hover={{ textDecoration: 'none' }}
     >
         <Box
-            maxHeight="300px"
-            className="fadeIn"
-            transition=".4s cubic-bezier(.5,0,.6,1)"
             overflow="hidden"
-            _groupHover={{
-                transform: 'scale(.975)'
-            }}
         >
-            <GatsbyImage 
-                image={node.localCover.childImageSharp.gatsbyImageData} 
-                //imgStyle={{ objectFit: 'cover' }} 
-                style={{ minHeight: '100%' }}
-            />
+            <Box
+                maxHeight="300px"
+                className="fadeIn"
+                transition=".4s cubic-bezier(.5,0,.6,1)"
+                overflow="hidden"
+                transform="scale(1.05)"
+                _groupHover={{
+                    transform: 'scale(1)'
+                }}
+            >
+                <GatsbyImage 
+                    image={node.localCover.childImageSharp.gatsbyImageData} 
+                    //imgStyle={{ objectFit: 'cover' }} 
+                    style={{ minHeight: '100%' }}
+                />
+            </Box>
         </Box>
         <Box
             mt="30px"
