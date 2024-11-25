@@ -57,51 +57,22 @@ const Index = ({ data: { allDribbbleShot } }) => {
         background="white"
       >
         <Box 
-          maxWidth={{ md: "700px", lg: "1100px" }}
-          padding={{ base: "0 20px", xl: '0' }} 
-          margin="0 auto" 
-          minHeight={{ lg: "100vh" }}
-          position="relative"
-          pt={{ base: "100px", md: '120px', lg: "initial" }}
-          pb={{ base: "100px", md: '120px', lg: "initial" }}
+          height={{ lg: "100vh" }}
+          display="flex"
+          justifyContent="center"
+          alignItems="center"
+          m={{ base: "120px 20px 80px 20px", md: "initial" }}
         >
-          {/*<Box
-            position="relative"
-            display={{ lg: "none" }} 
-            w={{ base: "240px", md: "320px" }}
-            h={{ base: "240px", md: "320px" }}
-            borderRadius="50%"
-            margin="0 auto 40px auto"
-            overflow="hidden"
-          >
-            <video
-                src={Design}
-                type='video/mp4'
-                preload="auto"
-                autoPlay={"autoplay"}
-                muted
-                loop
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  transform: "translateY(-50%) scale(1.4)"
-                }}
-            />
-            </Box>*/}
-          <Box
-            pt={{ md: '100px', lg: "250px" }}
+          <Heading as="h2"
+            fontSize={{ base: "3rem", md: '4rem', lg: "6rem" }}
+            userSelect="none"
+            fontWeight={500}
             textAlign="left"
           >
-            <Heading as="h2"
-              fontSize={{ base: "3rem", md: '4rem', lg: "6rem" }}
-              userSelect="none"
-              fontWeight={500}
-            >
-              <Text as="span" className="masked-entrance">Hi,</Text> <Text as="span" className="masked-entrance d1">I'm</Text> <Text as="span" className="masked-entrance d2"><Box as="span" className="video-hover" data-video-src="lichi"><span /><Link to="/about">Lichi</Link></Box>,</Text><br/>
-              <Text as="span" className="masked-entrance d3">I create</Text> <Text as="span" className="masked-entrance d4">value</Text> <Text as="span" className="masked-entrance d5">through</Text> <Text as="span" className="masked-entrance d6"><Box as="span" className="video-hover" data-video-src="design"><span /><Link to="https://www.behance.net/lisandropat" target="_blank">design</Link></Box>.</Text>
-            </Heading>
-            <VideoMouse />
-          </Box>
+            <Text as="span" className="masked-entrance">Hi,</Text> <Text as="span" className="masked-entrance d1">I'm</Text> <Text as="span" className="masked-entrance d2"><Box as="span" className="video-hover" data-video-src="lichi"><span /><Link to="/about">Lichi</Link></Box>,</Text><br/>
+            <Text as="span" className="masked-entrance d3">I create</Text> <Text as="span" className="masked-entrance d4">value</Text> <Text as="span" className="masked-entrance d5">through</Text> <Text as="span" className="masked-entrance d6"><Box as="span" className="video-hover" data-video-src="design"><span /><Link to="https://www.behance.net/lisandropat" target="_blank">design</Link></Box>.</Text>
+          </Heading>
+          <VideoMouse />
         </Box>
         <Box 
           maxWidth={{ md: "700px", lg: "1100px" }}
@@ -110,7 +81,11 @@ const Index = ({ data: { allDribbbleShot } }) => {
           position="relative"
           textAlign="left"
         >
-          <Heading as="h4" fontSize="21px" mb="10vh" fontWeight="400">
+          <Heading as="h4" 
+            fontSize={{ base: "16px", lg: "21px" }}
+            fontWeight="400"
+            mb={{ base: "48px", lg: "10vh" }}
+          >
             Featured projects
           </Heading>
           <Link to="https://www.behance.net/gallery/165910833/Burton-Rentals-Ecommerce-UIUX-Design" target="_blank">
@@ -159,7 +134,7 @@ const Index = ({ data: { allDribbbleShot } }) => {
                 >
                   Get premium gear <br/>at a fraction of the price
                 </Text>
-                <Text fontSize="18px" mt="21px" display={{ base: "none", lg: 'block' }}>Read case study ⎯</Text>
+                <Text fontSize="16px" mt="21px">Read case study ⎯</Text>
               </Box>
             </Box>
           </Link>
@@ -210,7 +185,7 @@ const Index = ({ data: { allDribbbleShot } }) => {
                 >
                   Tracking all Esports <br/>in a single platform
                 </Text>
-                <Text fontSize="18px" mt="21px" display={{ base: "none", lg: 'block' }}>Read case study ⎯</Text>
+                <Text fontSize="16px" mt="21px">Read case study ⎯</Text>
               </Box>
             </Box>
           </Link>
