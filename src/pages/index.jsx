@@ -75,7 +75,7 @@ const Index = () => {
         </Box>
         <Box 
           maxWidth={{ md: "700px", lg: "1100px" }}
-          padding={{ base: "0 20px 220px 20px", xl: '0 0 220px 0' }} 
+          padding={{ base: "0 20px 20px 20px", lg: "0 0 220px 0" }} 
           margin="0 auto" 
           position="relative"
           textAlign="left"
