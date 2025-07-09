@@ -110,69 +110,50 @@ const Footer = () => (
             mt="60px"
             justifyContent={{ base: "space-around", lg: "space-between" }}
           >
-            <Box>
-              <Link to={config.linkedinProfile} target="_blank">
-                <Text 
-                  background={`linear-gradient(white, white)`}
-                  backgroundSize="0 1px"
-                  backgroundPosition="0 100%"
-                  backgroundRepeat="no-repeat"
-                  transition=".4s"
-                  _hover={{
-                      backgroundSize: '100% 1px'
-                  }}
-                >
-                  LinkedIn
-                </Text>
-              </Link>
-              <Link to={config.behanceProfile} target="_blank">
-                <Text 
-                  mt="30px"
-                  background={`linear-gradient(white, white)`}
-                  backgroundSize="0 1px"
-                  backgroundPosition="0 100%"
-                  backgroundRepeat="no-repeat"
-                  transition=".4s"
-                  _hover={{
-                      backgroundSize: '100% 1px'
-                  }}
-                >
-                  Behance
-                </Text>
-              </Link>
-            </Box>
-            <Box>
-              <Link to={config.githubProfile} target="_blank">
-                <Text 
-                  background={`linear-gradient(white, white)`}
-                  backgroundSize="0 1px"
-                  backgroundPosition="0 100%"
-                  backgroundRepeat="no-repeat"
-                  transition=".4s"
-                  mt="30px"
-                  _hover={{
-                      backgroundSize: '100% 1px'
-                  }}
-                >
-                  GitHub
-                </Text>
-              </Link>
-              <Link to={config.githubProfile} target="_blank">
-                <Text 
-                  background={`linear-gradient(white, white)`}
-                  backgroundSize="0 1px"
-                  backgroundPosition="0 100%"
-                  backgroundRepeat="no-repeat"
-                  transition=".4s"
-                  mt="30px"
-                  _hover={{
-                      backgroundSize: '100% 1px'
-                  }}
-                >
-                  ‎ 
-                </Text>
-              </Link>
-            </Box>
+            <Link to={config.linkedinProfile} target="_blank">
+              <Text 
+                background={`linear-gradient(white, white)`}
+                backgroundSize="0 1px"
+                backgroundPosition="0 100%"
+                backgroundRepeat="no-repeat"
+                transition=".4s"
+                _hover={{
+                    backgroundSize: '100% 1px'
+                }}
+              >
+                LinkedIn
+              </Text>
+            </Link>
+            <Link to={config.behanceProfile} target="_blank">
+              <Text 
+                mt="30px"
+                background={`linear-gradient(white, white)`}
+                backgroundSize="0 1px"
+                backgroundPosition="0 100%"
+                backgroundRepeat="no-repeat"
+                transition=".4s"
+                _hover={{
+                    backgroundSize: '100% 1px'
+                }}
+              >
+                Behance
+              </Text>
+            </Link>
+            <Link to={config.githubProfile} target="_blank">
+              <Text 
+                background={`linear-gradient(white, white)`}
+                backgroundSize="0 1px"
+                backgroundPosition="0 100%"
+                backgroundRepeat="no-repeat"
+                transition=".4s"
+                mt="30px"
+                _hover={{
+                    backgroundSize: '100% 1px'
+                }}
+              >
+                GitHub
+              </Text>
+            </Link>
           </Flex>
         </Flex>
       </Box>
