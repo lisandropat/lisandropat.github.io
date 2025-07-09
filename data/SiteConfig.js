@@ -1,6 +1,6 @@
 const config = {
     siteTitle: "Lisandro Pat",
-    siteDescription: "Hi, I'm a product designer living around the world. I create dynamic experiences with motion, 3D, and various creative disciplines.",
+    siteDescription: "Lisandro is an experienced product designer living in Argentina. He creates dynamic experiences with motion, 3D, and various creative disciplines.",
     siteUrl: "https://lisandropat.github.io/",
 
     behanceProfile: "https://www.behance.net/lisandropat",

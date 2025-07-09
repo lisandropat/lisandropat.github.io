@@ -1,7 +1,7 @@
 /* eslint-disable */
 
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { Link } from "gatsby";
 import config from "../../data/SiteConfig";
 import Plx from 'react-plx';
 
@@ -14,7 +14,6 @@ import {
 
 import Button from "../components/Button/Button";
 
-import { DribbbleShots } from "../components/Dribbble/Dribbble";
 import VideoMouse from "../components/VideoMouse/VideoMouse";
 
 import Layout from "../components/Layout/Layout";
@@ -39,7 +38,7 @@ const parallaxData = [
   },
 ];
 
-const Index = ({ data: { allDribbbleShot } }) => {
+const Index = () => {
   return(
     <Layout 
       pageName="landing"
@@ -85,6 +84,7 @@ const Index = ({ data: { allDribbbleShot } }) => {
             fontSize={{ base: "16px", lg: "21px" }}
             fontWeight="400"
             mb={{ base: "48px", lg: "10vh" }}
+            id="work"
           >
             Featured projects
           </Heading>
@@ -195,7 +195,8 @@ const Index = ({ data: { allDribbbleShot } }) => {
               </Button>
           </Box>
         </Box>
-        <Box 
+        
+        {/* <Box 
           maxWidth={{ md: "700px", lg: "1100px" }}
           padding={{ base: "20px 20px 220px 20px", xl: '220px 0' }} 
           margin="0 auto" 
@@ -211,30 +212,12 @@ const Index = ({ data: { allDribbbleShot } }) => {
           <Box mt="100px">
             <DribbbleShots nodes={allDribbbleShot} />
           </Box>
-        </Box>
+        </Box> */} 
+        
       </Box>
       <Footer />
     </Layout>
   )
 }
-
-export const pageQuery = graphql`
-  query DribbbleQuery {
-    allDribbbleShot(sort: {order: DESC, fields: published}, limit: 6) {
-      edges {
-        node {
-          url
-          id
-          title
-          localCover {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
-      }
-    }
-  }
-`
 
 export default Index
