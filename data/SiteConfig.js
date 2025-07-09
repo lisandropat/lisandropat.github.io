@@ -4,7 +4,6 @@ const config = {
     siteUrl: "https://lisandropat.github.io/",
 
     behanceProfile: "https://www.behance.net/lisandropat",
-    dribbbleProfile: "https://dribbble.com/lisandropat",
     linkedinProfile: "https://www.linkedin.com/in/lisandropat/",
     githubProfile: "https://github.com/lisandropat",
 

@@ -142,20 +142,6 @@ const Footer = () => (
               </Link>
             </Box>
             <Box>
-              <Link to={config.dribbbleProfile} target="_blank">
-                <Text 
-                  background={`linear-gradient(white, white)`}
-                  backgroundSize="0 1px"
-                  backgroundPosition="0 100%"
-                  backgroundRepeat="no-repeat"
-                  transition=".4s"
-                  _hover={{
-                      backgroundSize: '100% 1px'
-                  }}
-                >
-                  Dribbble
-                </Text>
-              </Link>
               <Link to={config.githubProfile} target="_blank">
                 <Text 
                   background={`linear-gradient(white, white)`}

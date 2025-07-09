@@ -18,7 +18,6 @@
     "gatsby-plugin-sass": "^5.20.0",
     "gatsby-plugin-sharp": "^4.20.0",
     "gatsby-plugin-sitemap": "^5.20.0",
-    "gatsby-source-dribbble": "^2.1.6",
     "gatsby-source-filesystem": "^4.20.0",
     "gatsby-transformer-sharp": "^4.20.0",
     "gsap": "^3.10.4",

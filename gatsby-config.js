@@ -43,11 +43,5 @@ module.exports = {
         siteUrl: config.siteUrl,
       },
     },
-    {
-      resolve: `gatsby-source-dribbble`,
-      options: {
-        access_token: 'd3c9932ba15801658be729daf6a4d6b9591098927dcbbbfe56ebfa34e9ad16f3' //`${process.env.ACCESS_TOKEN}`
-      }
-    },
   ],
 }

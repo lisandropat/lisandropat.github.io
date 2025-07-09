@@ -88,9 +88,6 @@ const MenuContent = () => (
                 <SocialMenuItem marginTop="20px" to={config.behanceProfile}>
                     Behance
                 </SocialMenuItem>
-                <SocialMenuItem marginTop="20px" to={config.dribbbleProfile}>
-                    Dribbble
-                </SocialMenuItem>
             </Box>
             <Box marginLeft={{ lg: "110px" }}>
                 <Text color="#B2B2B2" fontSize="16px" marginBottom="14px">Menu</Text>
