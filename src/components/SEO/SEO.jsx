@@ -33,13 +33,14 @@ const SEO = ({ title, description }) => {
       <title>{title}</title>
 
       <meta name="description" content={description} data-react-helmet="true" />
-      <meta name="image" content="https://lisandropat.com/image.png" />
+      <meta name="image" content={`@${config.siteUrl}/image.png`} />
+      <link rel="icon" type="image/x-icon" href={`@${config.siteUrl}/favicon.ico`} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content="https://lisandropat.com/image.png" />
+      <meta property="og:image" content={`@${config.siteUrl}/image.png`} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content="https://lisandropat.com/image.png" />
+      <meta name="twitter:image" content={`@${config.siteUrl}/image.png`} />
       
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:site" content={`@${config.authorTwitter}`} />

@@ -126,7 +126,6 @@ const Footer = () => (
             </Link>
             <Link to={config.behanceProfile} target="_blank">
               <Text 
-                mt="30px"
                 background={`linear-gradient(white, white)`}
                 backgroundSize="0 1px"
                 backgroundPosition="0 100%"
@@ -146,7 +145,6 @@ const Footer = () => (
                 backgroundPosition="0 100%"
                 backgroundRepeat="no-repeat"
                 transition=".4s"
-                mt="30px"
                 _hover={{
                     backgroundSize: '100% 1px'
                 }}
