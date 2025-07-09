@@ -110,7 +110,7 @@ const Footer = () => (
             mt="60px"
             justifyContent={{ base: "space-around", lg: "space-between" }}
           >
-            <Box>
+            <Flex>
               <Link to={config.linkedinProfile} target="_blank">
                 <Text 
                   background={`linear-gradient(white, white)`}
@@ -140,8 +140,8 @@ const Footer = () => (
                   Behance
                 </Text>
               </Link>
-            </Box>
-            <Box>
+            </Flex>
+            <Flex>
               <Link to={config.githubProfile} target="_blank">
                 <Text 
                   background={`linear-gradient(white, white)`}
@@ -157,7 +157,7 @@ const Footer = () => (
                   GitHub
                 </Text>
               </Link>
-            </Box>
+            </Flex>
           </Flex>
         </Flex>
       </Box>
