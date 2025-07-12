@@ -1,32 +1,43 @@
-@import './anim.scss';
-
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300&display=swap');
 
-$font-primary: 'DM Sans';
-
-$p: #f6d024;
-
-$g: #8d9297;
-$lg: #DDE3EA;
-
-$cubic: cubic-bezier(.59,.01,.39,1);
+:root {
+    --p: #f6d024;
+    --g: #8d9297;
+    --lg: #DDE3EA;
+}
 
 html, body {
-    color: black !important; // or #1A202C
+    color: black !important; /* or #1A202C */
     background-color: white;
     overflow-x: hidden;
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overscroll-behavior-y: none;
+    scroll-behavior: smooth;
 }
 
 html, body, p, a, h1, h2, h3, h4, h5, h6 {
-    font-family: $font-primary, sans-serif !important;
+    font-family: 'DM Sans', sans-serif !important;
     letter-spacing: -.03em;
 }
 
 a { 
     text-decoration: none;
     transition: .2s;
+}
+
+#work:before {
+  content: "";
+  display: block;
+  height: 100px;
+  margin: -100px 0 0;
+}
+
+.hide-scrollbar {
+    scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
 }

@@ -9,7 +9,8 @@ import Menu from "../Menu/Menu";
 
 import Logo from './Logo';
 
-import '../../styles/index.scss';
+import '../../styles/index.css';
+import '../../styles/anim.css';
 
 const Header = () => (
   <Box 

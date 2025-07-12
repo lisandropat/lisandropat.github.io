@@ -24,6 +24,8 @@ import Footer from "../components/Footer/Footer";
 import FirstProject from "../images/burton.jpg";
 import SecondProject from "../images/elatamtv.jpg";
 
+import Shots from "../components/Shots/Shots";
+
 const parallaxData = [
   {
     start: 'self',
@@ -115,15 +117,6 @@ const Index = () => {
                 <Text 
                   fontWeight={{ base: "700", lg: "400" }} 
                   fontSize="21px"
-                  background={`linear-gradient(black, black)`}
-                  backgroundSize="0 1px"
-                  backgroundPosition="0 100%"
-                  backgroundRepeat="no-repeat"
-                  transition=".4s"
-                  display="inline-block"
-                  _groupHover={{
-                      backgroundSize: '100% 1px'
-                  }}
                 >
                   Burton Rentals
                 </Text>
@@ -134,7 +127,22 @@ const Index = () => {
                 >
                   Get premium gear <br/>at a fraction of the price
                 </Text>
-                <Text fontSize="16px" mt="21px">Read case study ⎯</Text>
+                <Text 
+                  fontSize="16px" 
+                  mt="21px"
+                  pb="8px"
+                  background={`linear-gradient(black, black)`}
+                  backgroundSize="0 0.5px"
+                  backgroundPosition="0 100%"
+                  backgroundRepeat="no-repeat"
+                  transition=".4s"
+                  display="inline-block"
+                  _groupHover={{
+                      backgroundSize: '100% 0.5px'
+                  }}
+                >
+                  Read case study ⎯
+                </Text>
               </Box>
             </Box>
           </Link>
@@ -166,15 +174,6 @@ const Index = () => {
                 <Text 
                   fontWeight={{ base: "700", lg: "400" }} 
                   fontSize="21px"
-                  background={`linear-gradient(black, black)`}
-                  backgroundSize="0 1px"
-                  backgroundPosition="0 100%"
-                  backgroundRepeat="no-repeat"
-                  transition=".4s"
-                  display="inline-block"
-                  _groupHover={{
-                      backgroundSize: '100% 1px'
-                  }}
                 >
                   eLatamTV
                 </Text>
@@ -185,7 +184,22 @@ const Index = () => {
                 >
                   Tracking all Esports <br/>in a single platform
                 </Text>
-                <Text fontSize="16px" mt="21px">Read case study ⎯</Text>
+                <Text 
+                  fontSize="16px" 
+                  mt="21px"
+                  pb="8px"
+                  background={`linear-gradient(black, black)`}
+                  backgroundSize="0 0.5px"
+                  backgroundPosition="0 100%"
+                  backgroundRepeat="no-repeat"
+                  transition=".4s"
+                  display="inline-block"
+                  _groupHover={{
+                      backgroundSize: '100% 0.5px'
+                  }}
+                >
+                  Read case study ⎯
+                </Text>
               </Box>
             </Box>
           </Link>
@@ -196,24 +210,25 @@ const Index = () => {
           </Box>
         </Box>
         
-        {/* <Box 
+        <Box 
           maxWidth={{ md: "700px", lg: "1100px" }}
-          padding={{ base: "20px 20px 220px 20px", xl: '220px 0' }} 
+          padding={{ base: "20px", xl: '0' }} 
           margin="0 auto" 
           position="relative"
           textAlign="left"
         >
           <Heading as="h3" fontSize={{ base: "42px", lg: "80px" }} fontWeight="400">
-            Dribbble Shots
+            Project Shots
           </Heading>
-          <Text fontSize="21px" mt="60px" maxWidth={{ lg: "60vw" }}>
-            I love crafting new ideas, devoting myself to development and design. It’s my way of creating products that your users will love. Dribbble is where I share all my sketches and sneak-peeks of my projects.
+          <Text fontSize="21px" m="60px 0" maxWidth={{ lg: "60vw" }}>
+            I love crafting new ideas, devoting myself to development and design. Check some of my sketches and sneak-peeks for past projects.
           </Text>
-          <Box mt="100px">
-            <DribbbleShots nodes={allDribbbleShot} />
-          </Box>
-        </Box> */} 
-        
+        </Box>
+        <Box
+          padding={{ base: "0 0 100px 0", xl: '0 0 220px 0' }} 
+        >
+          <Shots/>
+        </Box>
       </Box>
       <Footer />
     </Layout>

@@ -5,7 +5,8 @@ import {
   Heading
 } from '@chakra-ui/react';
 
-import '../../styles/index.scss';
+import '../../styles/index.css';
+import '../../styles/anim.css';
 
 const Logo = () => (
     <Link to="/">

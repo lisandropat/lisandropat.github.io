@@ -15,6 +15,7 @@ import MenuContent from './MenuContent';
 function Menu() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const btnRef = React.useRef()
+    const parentPortalRef = React.useRef(null);
     return (
         <>
             <Box
@@ -76,12 +77,17 @@ function Menu() {
                     />
                 </Box>
             </Box>
+            <Box ref={parentPortalRef} position="fixed" top="0" right="0" />
             <Drawer
                 isOpen={isOpen}
                 placement='right'
                 onClose={onClose}
                 finalFocusRef={btnRef}
                 size="lg"
+                portalProps={{
+                    appendToParentPortal: true,
+                    containerRef: parentPortalRef
+                }}
             >
                 <DrawerOverlay backgroundColor="rgba(238,238,238,.7)" />
                 <DrawerContent boxShadow="none">

@@ -4,7 +4,8 @@ import { Box } from '@chakra-ui/react';
 
 import ScrollArrow from "../ScrollArrow/ScrollArrow";
 
-import '../../styles/index.scss';
+import '../../styles/index.css';
+import '../../styles/anim.css';
 
 const Layout = ({ children, pageName }) => (
   <Box id={pageName}>

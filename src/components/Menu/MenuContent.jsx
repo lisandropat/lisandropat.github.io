@@ -91,7 +91,7 @@ const MenuContent = () => (
             </Box>
             <Box marginLeft={{ lg: "110px" }}>
                 <Text color="#B2B2B2" fontSize="16px" marginBottom="14px">Menu</Text>
-                <MenuItem to="#work">
+                <MenuItem to="/#work">
                     Work
                 </MenuItem>
                 <MenuItem to="/about" mt="-14px">
