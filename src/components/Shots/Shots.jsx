@@ -23,7 +23,7 @@ import Shot13 from '../../images/shots/Shot-13.jpg';
 const Shots = () => (
     <Box overflowX="scroll" padding={{ base: "0 5vw", lg: "0 12vw"}} className="hide-scrollbar">
         <Flex 
-            gap={{ base: "24px", lg: "64px" }}
+            gap={{ base: "24px", lg: "128px" }}
             width="max-content"
         >
             <Shot
@@ -57,21 +57,6 @@ const Shots = () => (
             <Shot
                 shotImage={Shot07}
                 shotDescription="Rehearsal Room renting map"
-            />
-
-            <Shot
-                shotImage={Shot09}
-                shotDescription="Search component app integration"
-            />
-
-            <Shot
-                shotImage={Shot10}
-                shotDescription="Extended map search app integration"
-            />
-
-            <Shot
-                shotImage={Shot11}
-                shotDescription="Filters component app integration"
             />
 
             <Shot
