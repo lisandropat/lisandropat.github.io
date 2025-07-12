@@ -11,7 +11,7 @@ const Shot = ({shotDescription, shotImage}) => (
         <Image 
             src={shotImage}
             borderRadius="24px"
-            height={{ base: "60vh", lg: "80vh" }}
+            height="60vh"
             width="auto"
         />
         <Text fontSize="14px" mt="21px">{shotDescription}</Text>
