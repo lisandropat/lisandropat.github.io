@@ -1,10 +1,8 @@
 import React from "react";
 
 import {
-  Image,
   Box,
-  Flex,
-  Text
+  Flex
 } from '@chakra-ui/react';
 
 import Shot from './Shot';
