@@ -1,0 +1,370 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&display=swap');
+
+:root {
+  --theme: #F62459;
+  --g: #8d9297;
+  --dg: #575D64;
+  --lg: #DDE3EA;
+}
+
+html, body {
+  color: black;
+  background-color: white;
+  overflow-x: clip;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body, p, a, h1, h2, h3, h4, h5, h6, span, div, button {
+  font-family: 'DM Sans', sans-serif;
+  letter-spacing: -.03em;
+}
+
+a {
+  text-decoration: none;
+  transition: .2s;
+  color: inherit;
+}
+
+/* Anchor offset so #work lands below the fixed header */
+#work::before {
+  content: "";
+  display: block;
+  height: 100px;
+  margin: -100px 0 0;
+}
+
+.hide-scrollbar { scrollbar-width: none; }
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+
+/* ---------- Animations ---------- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleIn { from { transform: scale(1.1); } to { transform: scale(1); } }
+@keyframes masked { from { top: 50px; } to { top: 0; } }
+@keyframes slideInBottom { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+
+.fadeIn {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.scaleIn {
+  transform: scale(1.1);
+  animation-name: scaleIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.masked-entrance {
+  position: relative;
+  display: inline-block;
+  animation-name: masked;
+  animation-duration: 1s;
+  top: 50px;
+  animation-fill-mode: forwards;
+}
+
+.masked-entrance::after {
+  content: "";
+  position: absolute;
+  background-color: white;
+  height: 100%;
+  width: 100%;
+  transform: translateY(-100%);
+  animation-fill-mode: forwards;
+  top: 100%;
+  left: 0;
+  animation-name: slideInBottom;
+  animation-duration: 1s;
+}
+
+/* Delay classes */
+.d1 { animation-delay: 100ms; z-index: 1; } .d1::after { animation-delay: 100ms; }
+.d2 { animation-delay: 200ms; z-index: 2; } .d2::after { animation-delay: 200ms; }
+.d3 { animation-delay: 300ms; z-index: 3; } .d3::after { animation-delay: 300ms; }
+.d4 { animation-delay: 400ms; z-index: 4; } .d4::after { animation-delay: 400ms; }
+.d5 { animation-delay: 500ms; z-index: 5; } .d5::after { animation-delay: 500ms; }
+.d6 { animation-delay: 600ms; z-index: 6; } .d6::after { animation-delay: 600ms; }
+.d7 { animation-delay: 700ms; z-index: 7; } .d7::after { animation-delay: 700ms; }
+.d8 { animation-delay: 800ms; z-index: 8; } .d8::after { animation-delay: 800ms; }
+.d9 { animation-delay: 900ms; z-index: 9; } .d9::after { animation-delay: 900ms; }
+
+/* ---------- Video-hover links (hero) ---------- */
+.video-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.video-hover a {
+  display: inline-block;
+  position: relative;
+  text-decoration: none;
+  color: black;
+  transition: color 0.3s;
+}
+
+.video-hover a::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  height: 2px;
+  width: 100%;
+  bottom: 10px;
+  left: 0;
+}
+
+/* ---------- Custom video cursor ---------- */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  contain: layout style size;
+  pointer-events: none;
+}
+
+.cursor.media-blend {
+  z-index: 100;
+  mix-blend-mode: exclusion;
+}
+
+.cursor.media-blend .cursor-media {
+  filter: invert(1);
+}
+
+.cursor-media {
+  position: relative;
+  display: block;
+  height: 350px;
+  width: 350px;
+  overflow: hidden;
+  border-radius: 100%;
+  transform: scale(0);
+  margin: -175px 0 0 -175px;
+}
+
+.cursor-media video {
+  position: absolute;
+  height: 100%;
+  left: 50%;
+  transform: translateX(-50%) scale(1.4);
+}
+
+@media (max-width: 980px) {
+  .cursor { display: none; }
+}
+
+/* ---------- Hamburger / menu button ---------- */
+.menu-toggle .bar {
+  position: absolute;
+  z-index: 2;
+  right: 24px;
+  width: 26px;
+  height: 2px;
+  background-color: black;
+  transition: .2s;
+}
+
+.menu-toggle .circle {
+  position: absolute;
+  z-index: 1;
+  top: 49%;
+  transform: translateY(-50%);
+  background-color: white;
+  right: 7px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.menu-toggle .circle .fill {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  height: 100%;
+  width: 100%;
+  background: black;
+  border-radius: 50%;
+  transition: .2s;
+}
+
+@media (min-width: 992px) {
+  .menu-toggle:hover .bar { background-color: white; }
+  .menu-toggle:hover .circle .fill { transform: translate(-50%, -50%) scale(1.1); }
+}
+
+/* closed state */
+.menu-toggle.closed .bar { transform: translateY(-50%); }
+.menu-toggle.closed .bar:nth-child(1) { top: 45%; }
+.menu-toggle.closed .bar:nth-child(2) { top: 54%; }
+/* open state -> X */
+.menu-toggle.open .bar:nth-child(1) { transform: translateY(-60%) rotate(-45deg); top: 50%; }
+.menu-toggle.open .bar:nth-child(2) { transform: translateY(-60%) rotate(45deg); top: 50%; }
+
+/* ---------- Drawer ---------- */
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(238, 238, 238, .7);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s ease;
+  z-index: 38;
+}
+.drawer-overlay.open { opacity: 1; visibility: visible; }
+
+.drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  max-width: 640px;
+  background: white;
+  transform: translateX(100%);
+  transition: transform .35s cubic-bezier(.4, 0, .2, 1);
+  z-index: 39;
+}
+.drawer.open { transform: translateX(0); }
+
+/* underline-grow link (menu, footer, "read case study") */
+.line-grow {
+  background-image: linear-gradient(black, black);
+  background-size: 0 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+  display: inline-block;
+  width: max-content;
+}
+.line-grow:hover { background-size: 100% 1px; }
+
+.line-grow-white {
+  background-image: linear-gradient(white, white);
+  background-size: 0 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+  display: inline-block;
+}
+.line-grow-white:hover { background-size: 100% 1px; }
+
+.menu-link {
+  font-size: 56px;
+  height: 70px;
+  padding-bottom: 10px;
+  margin-bottom: 16px;
+}
+.menu-link.active { background-image: linear-gradient(black, black); background-size: 100% 1px; background-position: 0 100%; background-repeat: no-repeat; }
+
+/* ---------- Parallax ---------- */
+.parallax-clip { overflow: hidden; }
+.parallax-inner { will-change: transform; }
+
+/* Native scroll-driven parallax (no JS). Degrades to static where unsupported.
+   The named view-timeline must live on an element whose nearest scroll
+   container is the document (the clip itself / the footer), NOT on the inner —
+   the inner's nearest scroller is the overflow:hidden clip, which would stall. */
+@keyframes plx-img {
+  from { transform: translateY(-12%); }
+  to   { transform: translateY(12%); }
+}
+@supports (animation-timeline: view()) {
+  .parallax-clip {
+    view-timeline-name: --plx;
+    view-timeline-axis: block;
+  }
+  .parallax-clip .parallax-inner {
+    animation: plx-img linear both;
+    animation-timeline: --plx;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .parallax-inner { animation: none !important; transform: none !important; }
+}
+
+/* ---------- Reveal footer (fixed, sits underneath the content) ---------- */
+/* The footer is pinned to the viewport behind the page; the main content
+   (opaque) scrolls up and uncovers it. A spacer adds the scroll room. */
+.reveal-footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 0;
+}
+.footer-spacer { height: 100vh; }
+/* Custom-element hosts shouldn't affect layout; their children flow normally. */
+site-header, site-footer { display: contents; }
+/* main must fully cover the fixed footer: opaque bg + its own block-formatting
+   context so child margins don't collapse and expose the footer at the top. */
+main {
+  display: flow-root;
+  background: white;
+}
+
+/* ---------- "Read case study" underline grow on group hover ---------- */
+.case-link {
+  display: inline-block;
+  padding-bottom: 8px;
+  background-image: linear-gradient(black, black);
+  background-size: 0 0.5px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: .4s;
+}
+.project-group:hover .case-link { background-size: 100% 0.5px; }
+
+/* ---------- "View more" pill button ---------- */
+.pill-btn {
+  position: relative;
+  overflow: hidden;
+  font-weight: 600;
+  font-size: 18px;
+  border: 1px solid #DDE3EA;
+  min-width: 170px;
+  height: 72px;
+  padding: 0 40px;
+  border-radius: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.pill-btn .label {
+  position: relative;
+  z-index: 3;
+  transition: .3s cubic-bezier(.5, 0, .6, 1);
+  color: black;
+  top: -1px;
+}
+.pill-btn .bg {
+  position: absolute;
+  bottom: -200%;
+  height: 200%;
+  width: 100%;
+  background: black;
+  border-radius: 50%;
+  transition: .6s;
+}
+.pill-btn:hover .label { color: white; }
+.pill-btn:hover .bg { bottom: 0; border-radius: 0; }
+
+/* ScrollArrow */
+.scroll-arrow {
+  position: fixed;
+  bottom: 20px;
+  left: 93vw;
+  opacity: 0;
+  transition: .2s;
+  z-index: 1000;
+  cursor: pointer;
+  font-size: 24px;
+  color: black;
+}
+.scroll-arrow.show { opacity: 1; }

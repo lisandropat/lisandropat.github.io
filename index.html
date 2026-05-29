@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1" />
+
+  <title>Lisandro Pat — Designer</title>
+  <meta name="description" content="Lisandro is an experienced product designer living in Argentina. He creates dynamic experiences with motion, 3D, and various creative disciplines." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:title" content="Lisandro Pat — Designer" />
+  <meta property="og:description" content="Lisandro is an experienced product designer living in Argentina." />
+  <meta property="og:image" content="assets/image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Lisandro Pat — Designer" />
+  <meta name="twitter:image" content="assets/image.png" />
+
+  <!-- Fonts & icons -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <!-- Tailwind (Play CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        screens: { sm: '480px', md: '768px', lg: '992px', xl: '1280px' },
+        extend: {
+          colors: { theme: '#F62459', grayc: '#8d9297', darkgray: '#575D64', lightgray: '#DDE3EA' },
+          fontFamily: { sans: ['"DM Sans"', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Person schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "email": "mailto:lisandropat@gmail.com",
+    "jobTitle": "UX/UI Designer",
+    "name": "Lisandro Pat",
+    "telephone": "+34695626120",
+    "url": "https://lisandropat.github.io/"
+  }
+  </script>
+</head>
+<body id="landing">
+
+  <site-header></site-header>
+
+  <!-- ============ MAIN ============ -->
+  <main class="text-center relative z-[2] bg-white">
+
+    <!-- Hero -->
+    <section class="lg:h-screen flex justify-center items-center m-[120px_20px_80px_20px] md:m-0">
+      <h2 class="text-[3rem] md:text-[4rem] lg:text-[6rem] select-none font-light text-left leading-[1.1]">
+        <span class="masked-entrance">Hi,</span>
+        <span class="masked-entrance d1">I'm</span>
+        <span class="masked-entrance d2"><span class="video-hover" data-video-src="lichi"><span></span><a href="about.html">Lichi</a></span>,</span><br />
+        <span class="masked-entrance d3">I create</span>
+        <span class="masked-entrance d4">value</span>
+        <span class="masked-entrance d5">through</span>
+        <span class="masked-entrance d6"><span class="video-hover" data-video-src="design"><span></span><a href="https://www.behance.net/lisandropat" target="_blank" rel="noopener">design</a></span>.</span>
+      </h2>
+
+      <!-- Video cursor -->
+      <div class="cursor">
+        <div class="cursor-media">
+          <video src="assets/videos/lichi.mp4" type="video/mp4" preload="auto" autoplay muted loop playsinline id="lichi"></video>
+          <video src="assets/videos/design.mp4" type="video/mp4" preload="auto" autoplay muted loop playsinline id="design"></video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured projects -->
+    <section class="max-w-full md:max-w-[700px] lg:max-w-[1100px] px-[20px] pb-[20px] lg:px-0 lg:pb-[220px] mx-auto relative text-left">
+      <h4 id="work" class="text-[16px] lg:text-[21px] font-normal mb-[48px] lg:mb-[10vh]">Featured projects</h4>
+
+      <!-- Project 1: Burton -->
+      <a href="https://www.behance.net/gallery/165910833/Burton-Rentals-Ecommerce-UIUX-Design" target="_blank" rel="noopener">
+        <div class="project-group relative lg:h-screen">
+          <div class="parallax-clip relative lg:absolute h-[60vh] lg:h-[94vh] w-[110vw] md:w-full lg:w-[42%] -ml-[10vw] md:ml-0 lg:right-0">
+            <div class="parallax-inner">
+              <img src="assets/burton.jpg" alt="Burton Rentals" class="w-full scale-150" />
+            </div>
+          </div>
+          <div class="mt-[40px] lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-[90%]">
+            <p class="font-bold lg:font-normal text-[21px]">Burton Rentals</p>
+            <p class="text-[21px] lg:text-[36px] lg:leading-[133%] mt-[14px] lg:mt-[30px]">Get premium gear <br />at a fraction of the price</p>
+            <p class="text-[16px] mt-[21px]"><span class="case-link">Read case study ⎯</span></p>
+          </div>
+        </div>
+      </a>
+
+      <!-- Project 2: eLatamTV -->
+      <a href="https://www.behance.net/gallery/125267739/eLatamTV-UXUI-Esports-Gaming-Platform" target="_blank" rel="noopener">
+        <div class="project-group relative lg:h-screen mt-[80px]">
+          <div class="parallax-clip relative lg:absolute h-[60vh] lg:h-[94%] w-[110vw] md:w-full lg:w-[42%] -ml-[10vw] md:ml-0">
+            <div class="parallax-inner">
+              <img src="assets/elatamtv.jpg" alt="eLatamTV" class="w-full scale-150" />
+            </div>
+          </div>
+          <div class="mt-[40px] lg:mt-0 lg:absolute lg:top-1/2 lg:right-[6.5%] lg:-translate-y-[90%]">
+            <p class="font-bold lg:font-normal text-[21px]">eLatamTV</p>
+            <p class="text-[21px] lg:text-[36px] lg:leading-[133%] mt-[14px] lg:mt-[30px]">Tracking all Esports <br />in a single platform</p>
+            <p class="text-[16px] mt-[21px]"><span class="case-link">Read case study ⎯</span></p>
+          </div>
+        </div>
+      </a>
+
+      <div class="text-center mt-[60px] mb-[60px] lg:mb-0">
+        <a href="https://www.behance.net/collection/199566213/UXUI-Portfolio" target="_blank" rel="noopener" class="pill-btn">
+          <span class="label">View more projects</span>
+          <span class="bg"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Project shots intro -->
+    <section class="max-w-full md:max-w-[700px] lg:max-w-[1100px] px-[20px] xl:px-0 mx-auto relative text-left">
+      <h3 class="text-[42px] lg:text-[80px] font-normal">Project Shots</h3>
+      <p class="text-[21px] my-[60px] lg:max-w-[60vw]">
+        I love crafting new ideas, devoting myself to development and design. Check some of my sketches and sneak-peeks for past projects.
+      </p>
+    </section>
+
+    <!-- Shots gallery -->
+    <section class="pb-[100px] xl:pb-[220px]">
+      <div class="overflow-x-scroll px-[5vw] lg:px-[12vw] hide-scrollbar">
+        <div class="flex gap-[24px] lg:gap-[128px] w-max">
+          <div><img src="assets/shots/Shot-01.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="AR integration to renting app" /><p class="text-[14px] mt-[21px]">AR integration to renting app</p></div>
+          <div><img src="assets/shots/Shot-02.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="Renting app concept" /><p class="text-[14px] mt-[21px]">Renting app concept</p></div>
+          <div><img src="assets/shots/Shot-03.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="Eco-friendly bottles product page" /><p class="text-[14px] mt-[21px]">Eco-friendly bottles product page</p></div>
+          <div><img src="assets/shots/Shot-04.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="Car renting homepage" /><p class="text-[14px] mt-[21px]">Car renting homepage</p></div>
+          <div><img src="assets/shots/Shot-05.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="Hasselblad homepage proposal" /><p class="text-[14px] mt-[21px]">Hasselblad homepage proposal</p></div>
+          <div><img src="assets/shots/Shot-06.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="Rental/Resale B2B homepage" /><p class="text-[14px] mt-[21px]">Rental/Resale B2B homepage</p></div>
+          <div><img src="assets/shots/Shot-07.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="Rehearsal Room renting map" /><p class="text-[14px] mt-[21px]">Rehearsal Room renting map</p></div>
+          <div><img src="assets/shots/Shot-12.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="Rehearsal Room administration web app" /><p class="text-[14px] mt-[21px]">Rehearsal Room administration web app</p></div>
+          <div><img src="assets/shots/Shot-13.jpg" class="rounded-[24px] h-[60vh] w-auto max-w-none" alt="Responsive adaptation for dashboard" /><p class="text-[14px] mt-[21px]">Responsive adaptation for dashboard</p></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+
+  <!-- Scroll to top -->
+  <div class="scroll-arrow ri-arrow-up-line" role="button" aria-label="Scroll to top"></div>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="js/site-header.js"></script>
+  <script src="js/site-footer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

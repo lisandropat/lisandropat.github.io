@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, minimum-scale=1" />
+
+  <title>About me — Lisandro Pat</title>
+  <meta name="description" content="Lisandro graduated as a multimedia designer and became a self-taught frontend developer, finding his passion in the middle of both fields: the product design." />
+  <meta name="robots" content="index, follow" />
+
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+
+  <meta property="og:title" content="About me — Lisandro Pat" />
+  <meta property="og:description" content="Argentinian designer working remotely on innovative projects focused on UX/UI." />
+  <meta property="og:image" content="assets/image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="About me — Lisandro Pat" />
+  <meta name="twitter:image" content="assets/image.png" />
+
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        screens: { sm: '480px', md: '768px', lg: '992px', xl: '1280px' },
+        extend: {
+          colors: { theme: '#F62459', grayc: '#8d9297', darkgray: '#575D64', lightgray: '#DDE3EA' },
+          fontFamily: { sans: ['"DM Sans"', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body id="about">
+
+  <site-header active="about"></site-header>
+
+  <!-- ============ MAIN ============ -->
+  <main class="text-center relative z-[2] bg-white">
+
+    <!-- Quote + brands -->
+    <section class="max-w-full md:max-w-[700px] lg:max-w-[1100px] px-[20px] xl:px-0 mx-auto relative pt-[100px] lg:pt-0">
+      <h2 class="fadeIn d2 text-[32px] md:text-[48px] lg:text-[5.5vw] font-light text-left max-w-[90%] mt-[20%] leading-[1.15]">
+        “Every great design begins with an even better story”
+      </h2>
+      <div class="flex items-center mt-[30px] lg:mt-[60px] gap-[12px] lg:gap-[30px] opacity-25">
+        <img src="assets/Burton.png" alt="Burton" class="fadeIn d3 w-[90px] lg:w-[110px]" />
+        <img src="assets/YETI.png" alt="YETI" class="fadeIn d4 w-[40px] lg:w-[60px]" />
+        <img src="assets/DSG.png" alt="DSG" class="fadeIn d5 w-[50px] lg:w-[70px]" />
+        <img src="assets/Eddie-Bauer.png" alt="Eddie Bauer" class="fadeIn d6 w-[90px] lg:w-[110px]" />
+      </div>
+    </section>
+
+    <!-- Who am I -->
+    <section class="max-w-full md:max-w-[700px] lg:max-w-[1100px] px-[20px] xl:px-0 mx-auto relative">
+      <div class="text-left relative mt-[60px] lg:mt-[200px]">
+        <h4 class="text-[20px] lg:absolute top-[10px]">Who am I</h4>
+        <p class="max-w-full lg:max-w-[50vw] text-[21px] lg:text-[28px] leading-[150%] lg:ml-[28%] mt-[14px] lg:mt-0">
+          Lisandro Pat: that's me, also called Lichi <span role="img" aria-label="hi">👋</span>. I'm an argentinian designer working remotely on innovative projects focused on UX/UI and visual experiences using multiple creative disciplines which adapt to clients proposals.
+        </p>
+        <div class="lg:ml-[28%] mt-[30px]">
+          <a href="https://drive.google.com/file/d/1GFkQO7BbbGiattK61VyehXmk9D1RtdcF/view?usp=sharing" target="_blank" rel="noopener" class="pill-btn">
+            <span class="label">Download my resume <i class="ri-download-2-line relative top-[2px] ml-[10px]"></i></span>
+            <span class="bg"></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Parallax portraits (desktop only) -->
+      <div class="justify-between mt-[260px] hidden lg:flex">
+        <div class="parallax-clip h-[70vh] w-[48%] overflow-hidden">
+          <div class="parallax-inner">
+            <img src="assets/lisandro.jpeg" alt="Lisandro" class="w-full scale-150" />
+          </div>
+        </div>
+        <div class="parallax-clip h-[70vh] w-[48%] overflow-hidden relative top-[160px]">
+          <div class="parallax-inner">
+            <img src="assets/Vertical-About-2.jpg" alt="Lisandro at work" class="w-full scale-150" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Closing text -->
+      <div class="mt-[100px] lg:mt-[400px] mb-[150px] lg:mb-[300px] text-left">
+        <h3 class="text-[36px] lg:text-[42px] font-normal lg:max-w-[60vw]">
+          The type of designer who's obsessed with making things harmonic, simple and obvious
+        </h3>
+        <p class="text-[21px] mt-[60px] lg:max-w-[60vw]">
+          I like to keep my workflow clean and organized, approaching design in a systematic and minimalistic way, emphasizing the maintenance and scalability of every visual language I develop. I pay careful attention to the smallest details, making sure that each element harmonizes with the overall visual identity.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <site-footer></site-footer>
+
+  <div class="scroll-arrow ri-arrow-up-line" role="button" aria-label="Scroll to top"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="js/site-header.js"></script>
+  <script src="js/site-footer.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
