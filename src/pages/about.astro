@@ -1,0 +1,219 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PillButton from '../components/PillButton.astro';
+import ParallaxImage from '../components/ParallaxImage.astro';
+
+import travel from '../assets/about/lisandro-andes.jpg';
+import family from '../assets/about/lisandro-family.jpg';
+
+import cover from '../assets/about/lisandro-pichilemu.jpg';
+
+const RESUME =
+  'https://drive.google.com/file/d/1GFkQO7BbbGiattK61VyehXmk9D1RtdcF/view?usp=sharing';
+---
+
+<Base
+  title="About me — Lisandro Pat"
+  description="Lisandro graduated as a multimedia designer and became a self-taught frontend developer, finding his passion in the middle of both fields: the product design."
+  active="about"
+  bodyId="about"
+>
+
+  <section class="circle-runway relative [--dot:120px] [--m:20px] lg:[--m:64px] [--r:0px] mt-[96px]">
+    <div class="sticky top-0 h-screen">
+      <div class="circle-frame absolute inset-0">
+        <Image
+          src={cover}
+          alt=""
+          loading="eager"
+          fetchpriority="high"
+          widths={[720, 1080]}
+          sizes="100vw"
+          class="circle-media absolute inset-0 h-full w-full object-cover"
+        />
+        <div class="circle-grain" aria-hidden="true"></div>
+        <div class="circle-flicker" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    class="relative mx-auto max-w-full px-[20px] md:max-w-[700px] lg:max-w-[1100px] xl:px-0 -mt-[186px]"
+  >
+    <div class="center">
+      <p
+        class="mt-[14px] max-w-full text-[21px] leading-[150%] lg:mt-0 lg:max-w-[50vw] lg:text-[28px] mx-auto"
+      >
+        Lisandro Pat: that's me, you can call me Lichi <span role="img" aria-label="hi">👋</span>. I'm an
+        argentinian designer working remotely on innovative projects focused on UX/UI and visual
+        experiences using multiple creative disciplines which adapt to clients proposals.
+      </p>
+      <div class="mt-[96px]">
+        <PillButton href={RESUME}>
+          Download my resume
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="relative top-[2px] ml-[10px] inline-block"
+            aria-hidden="true"
+          >
+            <path d="M12 3v13" />
+            <path d="m7 12 5 5 5-5" />
+            <path d="M5 21h14" />
+          </svg>
+        </PillButton>
+      </div>
+    </div>
+
+    <div class="mt-[260px] flex flex-col gap-[40px] lg:flex-row lg:items-end lg:justify-between lg:gap-0">
+      <ParallaxImage
+        src={travel}
+        alt="Lisandro in the Andes"
+        class="-mx-[20px] h-[70vh] lg:mx-0 lg:w-[48%]"
+        widths={[560, 1120]}
+        sizes="48vw"
+      />
+      <div class="max-w-full text-left lg:max-w-[48%]">
+        <p class="text-[14px] mb-12">The beginning</p>
+        <p>Growing up in Argentina, my design journey started with drawing ✍️ As a teen, manga (Japanese comics!) sparked my passion to visual storytelling. Since then, I've met a lot of people who introduced me to different worlds steeped in art: tattooing, ecological architecture, music, etc. letting me leave a mark on each one.</p>
+      </div>
+    </div>
+
+    <div class="my-[260px] flex flex-col-reverse gap-[40px] lg:flex-row lg:items-end lg:justify-between lg:gap-0">
+      <div class="max-w-full text-left lg:max-w-[48%]">
+        <p class="text-[14px] mb-12">My present</p>
+        <p>Right now, my partner and I are in Santiago, Chile 🇨🇱 Between the Andes (the longest mountain range in the world!) and the Pacific Ocean, I collaborate with tech teams in different tasks such as frontend development and UX/UI design, and occasionally do independent work focusing on creating artistic design experiences that don't need words to communicate.</p>
+      </div>
+      <ParallaxImage
+        src={family}
+        alt="Lisandro with family"
+        class="-mx-[20px] h-[70vh] lg:mx-0 lg:w-[48%]"
+        widths={[560, 1120]}
+        sizes="48vw"
+      />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .circle-runway {
+    --runway: 120vh;
+    --ease: cubic-bezier(.17,0,.46,1);
+  }
+
+  .circle-frame {
+    clip-path: inset(var(--m) var(--m) 0 var(--m) round var(--r));
+  }
+
+  .circle-grain {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    height: 200%;
+    width: 200%;
+    pointer-events: none;
+    opacity: 0.55;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='3.2' intercept='-1.1'/%3E%3CfeFuncG type='linear' slope='3.2' intercept='-1.1'/%3E%3CfeFuncB type='linear' slope='3.2' intercept='-1.1'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    animation: circle-grain-jitter 0.55s steps(1, end) infinite;
+  }
+
+  .circle-flicker {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: #000;
+    opacity: 0.08;
+  }
+
+  @keyframes circle-grain-jitter {
+    0% {
+      translate: 0 0;
+    }
+    12.5% {
+      translate: -6% -4%;
+    }
+    25% {
+      translate: -12% 5%;
+    }
+    37.5% {
+      translate: 4% -8%;
+    }
+    50% {
+      translate: -9% 9%;
+    }
+    62.5% {
+      translate: 7% 3%;
+    }
+    75% {
+      translate: -3% -11%;
+    }
+    87.5% {
+      translate: 10% -2%;
+    }
+  }
+
+  @keyframes circle-shrink {
+    from {
+      clip-path: inset(var(--m) var(--m) 0 var(--m) round var(--r));
+    }
+    to {
+      clip-path: inset(
+        calc(50% - var(--dot) / 2) calc(50% - var(--dot) / 2) calc(50% - var(--dot) / 2)
+          calc(50% - var(--dot) / 2) round calc(var(--dot) / 2)
+      );
+    }
+  }
+
+  @keyframes circle-pullback {
+    from {
+      scale: 1;
+    }
+    to {
+      scale: 0.50;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .circle-grain,
+    .circle-flicker {
+      animation: none;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .circle-runway {
+        height: var(--runway);
+        view-timeline-name: --circle-tl;
+        view-timeline-axis: block;
+      }
+
+      .circle-frame,
+      .circle-media {
+        animation-duration: 1ms;
+        animation-timing-function: var(--ease);
+        animation-fill-mode: both;
+        animation-timeline: --circle-tl;
+      }
+
+      .circle-frame {
+        animation-name: circle-shrink;
+        animation-range: contain -96px contain 100%;
+      }
+
+      .circle-media {
+        animation-name: circle-pullback;
+        animation-range: contain -96px contain 100%;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,362 @@
+---
+import { Picture, getImage } from 'astro:assets';
+import { shots } from '../data/shots';
+
+const COPIES = 3;
+const STRIP_WIDTHS = [400, 700, 1000];
+const MODAL_WIDTHS = [800, 1200, 1600];
+
+const widthsFor = (candidates: number[], naturalWidth: number) => {
+  const smaller = candidates.filter((w) => w < naturalWidth);
+  return smaller.length === candidates.length ? smaller : [...smaller, naturalWidth];
+};
+
+const STRIP_SIZES = '(min-width: 992px) 900px, 70vw';
+
+const slides = await Promise.all(
+  shots.map(async (shot) => {
+    const large = await getImage({
+      src: shot.image,
+      format: 'webp',
+      widths: widthsFor(MODAL_WIDTHS, shot.image.width),
+      sizes: '92vw',
+    });
+
+    return {
+      src: large.src,
+      srcset: large.srcSet.attribute,
+      width: shot.image.width,
+      height: shot.image.height,
+    };
+  })
+);
+
+const groups = Array.from({ length: COPIES }, (_, i) => i);
+---
+
+<section id="shots-strip" class="group relative">
+  <div
+    id="shots-track"
+    class="hide-scrollbar flex w-full gap-[20px] overflow-x-auto overscroll-x-contain px-[5vw] lg:gap-[40px] lg:px-[12vw]"
+  >
+    {
+      groups.map((group) =>
+        shots.map((shot, i) => (
+          <button
+            type="button"
+            data-shot
+            data-index={i}
+            aria-hidden={group > 0 ? 'true' : undefined}
+            tabindex={group > 0 ? -1 : undefined}
+            class="block h-[40vh] shrink-0 cursor-pointer focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
+          >
+            <Picture
+              src={shot.image}
+              alt={group === 0 ? shot.caption : ''}
+              formats={['avif', 'webp']}
+              widths={widthsFor(STRIP_WIDTHS, shot.image.width)}
+              sizes={STRIP_SIZES}
+              class="h-full w-auto max-w-none" // rounded-[18px]
+            />
+          </button>
+        ))
+      )
+    }
+  </div>
+
+  <div class="pointer-events-none absolute inset-0 flex items-center justify-between px-[10px] lg:px-[24px]">
+    <button
+      type="button"
+      id="shots-prev"
+      aria-label="Scroll left"
+      class="pointer-events-auto grid h-[52px] w-[52px] cursor-pointer place-items-center rounded-full  bg-white/70 opacity-0 backdrop-blur-md transition group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M15 5l-7 7 7 7"></path>
+      </svg>
+    </button>
+    <button
+      type="button"
+      id="shots-next"
+      aria-label="Scroll right"
+      class="pointer-events-auto grid h-[52px] w-[52px] cursor-pointer place-items-center rounded-full bg-white/70 opacity-0 backdrop-blur-md transition group-hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+    >
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M9 5l7 7-7 7"></path>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<dialog
+  id="shot-modal"
+  aria-label="Project shots"
+  class="pointer-events-none fixed inset-0 m-0 h-full max-h-none w-full max-w-none scale-95 border-0 bg-transparent p-0 opacity-0 transition-[opacity,scale,display,overlay] transition-discrete duration-300 ease-out backdrop:bg-black/90 backdrop:opacity-0 backdrop:transition-[opacity,display,overlay] backdrop:transition-discrete backdrop:duration-300 open:pointer-events-auto open:scale-100 open:opacity-100 open:backdrop:opacity-100 starting:open:scale-95 starting:open:opacity-0 starting:open:backdrop:opacity-0 motion-reduce:transition-none motion-reduce:backdrop:transition-none"
+>
+  <div class="flex h-full w-full flex-col text-white">
+    <div class="flex shrink-0 items-center justify-between px-[20px] py-[16px] lg:px-[40px]">
+      <p id="shot-modal-counter" class="text-[14px] tabular-nums opacity-60"></p>
+      <button
+        type="button"
+        id="shot-modal-close"
+        aria-label="Close"
+        class="grid h-[44px] w-[44px] cursor-pointer place-items-center rounded-full opacity-70 transition hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+      >
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6L6 18"></path>
+        </svg>
+      </button>
+    </div>
+
+    <div id="shot-modal-stage" class="relative flex min-h-0 flex-1 items-center justify-center">
+      <button
+        type="button"
+        id="shot-modal-prev"
+        aria-label="Previous shot"
+        class="absolute left-[8px] z-10 grid h-[52px] w-[52px] cursor-pointer place-items-center rounded-full bg-black/40 opacity-70 transition hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:pointer-events-none disabled:opacity-20 lg:left-[24px]"
+      >
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M15 5l-7 7 7 7"></path>
+        </svg>
+      </button>
+
+      <div id="shot-modal-viewport" class="h-full w-full touch-pan-y overflow-hidden">
+        <div
+          id="shot-modal-track"
+          class="flex h-full w-full translate-x-[calc(var(--slide,0)*-100%)] transition-[translate] duration-[450ms] ease-[cubic-bezier(0.22,1,0.36,1)] data-[dragging]:transition-none motion-reduce:transition-none"
+        >
+          {
+            slides.map((slide, i) => (
+              <div
+                data-frame
+                class="flex h-full w-full shrink-0 items-center justify-center px-[20px] lg:px-[100px]"
+              >
+                <img
+                  data-slide
+                  data-src={slide.src}
+                  data-srcset={slide.srcset}
+                  width={slide.width}
+                  height={slide.height}
+                  alt={shots[i].caption}
+                  draggable="false"
+                  class="max-h-full w-auto max-w-full object-contain" // rounded-[12px]
+                />
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <button
+        type="button"
+        id="shot-modal-next"
+        aria-label="Next shot"
+        class="absolute right-[8px] z-10 grid h-[52px] w-[52px] cursor-pointer place-items-center rounded-full bg-black/40 opacity-70 transition hover:opacity-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:pointer-events-none disabled:opacity-20 lg:right-[24px]"
+      >
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M9 5l7 7-7 7"></path>
+        </svg>
+      </button>
+    </div>
+
+    <p id="shot-modal-caption" class="shrink-0 px-[20px] py-[20px] text-center text-[14px]"></p>
+  </div>
+</dialog>
+
+<script>
+  const strip = document.querySelector<HTMLElement>('#shots-strip');
+  const track = document.querySelector<HTMLElement>('#shots-track');
+  const stripPrev = document.querySelector<HTMLButtonElement>('#shots-prev');
+  const stripNext = document.querySelector<HTMLButtonElement>('#shots-next');
+
+  if (strip && track && stripPrev && stripNext) {
+    const SPEED = 45;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+
+    let setWidth = 0;
+    let target: number | null = null;
+    let held = false;
+    let idleUntil = 0;
+    let previous = performance.now();
+
+    const measure = () => {
+      const wasCentred = setWidth ? track.scrollLeft - setWidth : 0;
+      setWidth = track.scrollWidth / 3;
+      track.scrollLeft = setWidth + wasCentred;
+    };
+
+    const wrap = () => {
+      if (!setWidth) return;
+      if (track.scrollLeft >= setWidth * 2) {
+        track.scrollLeft -= setWidth;
+        if (target !== null) target -= setWidth;
+      } else if (track.scrollLeft < 1) {
+        track.scrollLeft += setWidth;
+        if (target !== null) target += setWidth;
+      }
+    };
+
+    const frame = (now: number) => {
+      const delta = Math.min(now - previous, 50);
+      previous = now;
+
+      if (target !== null) {
+        const distance = target - track.scrollLeft;
+        if (Math.abs(distance) < 0.5) {
+          track.scrollLeft = target;
+          target = null;
+        } else {
+          track.scrollLeft += distance * (1 - Math.exp(-delta / 90));
+        }
+      } else if (!held && now > idleUntil && !reduced.matches) {
+        track.scrollLeft += (SPEED * delta) / 2000;
+      }
+
+      wrap();
+      requestAnimationFrame(frame);
+    };
+
+    const nudge = (amount: number) => {
+      idleUntil = performance.now() + 900;
+      target = (target ?? track.scrollLeft) + amount;
+    };
+
+    strip.addEventListener('pointerenter', () => (held = true));
+    strip.addEventListener('pointerleave', () => (held = false));
+    strip.addEventListener('focusin', () => (held = true));
+    strip.addEventListener('focusout', () => (held = false));
+    track.addEventListener('wheel', () => {
+      target = null;
+      idleUntil = performance.now() + 1200;
+    });
+    track.addEventListener('pointerdown', () => {
+      target = null;
+      idleUntil = performance.now() + 1200;
+    });
+
+    stripPrev.addEventListener('click', () => nudge(-track.clientWidth * 0.8));
+    stripNext.addEventListener('click', () => nudge(track.clientWidth * 0.8));
+
+    measure();
+    addEventListener('resize', measure);
+    requestAnimationFrame((now) => {
+      previous = now;
+      frame(now);
+    });
+  }
+</script>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('#shot-modal');
+  const triggers = [...document.querySelectorAll<HTMLButtonElement>('[data-shot]')];
+  const track = document.querySelector<HTMLElement>('#shot-modal-track');
+  const viewport = document.querySelector<HTMLElement>('#shot-modal-viewport');
+  const stage = document.querySelector<HTMLElement>('#shot-modal-stage');
+  const slides = [...document.querySelectorAll<HTMLImageElement>('[data-slide]')];
+  const frames = [...document.querySelectorAll<HTMLElement>('[data-frame]')];
+  const caption = document.querySelector<HTMLElement>('#shot-modal-caption');
+  const counter = document.querySelector<HTMLElement>('#shot-modal-counter');
+  const prev = document.querySelector<HTMLButtonElement>('#shot-modal-prev');
+  const next = document.querySelector<HTMLButtonElement>('#shot-modal-next');
+
+  if (dialog && track && viewport && stage && caption && counter && prev && next && slides.length) {
+    const last = slides.length - 1;
+
+    let index = 0;
+    let opener: HTMLButtonElement | null = null;
+    let dragFrom: number | null = null;
+    let dragWidth = 0;
+    let dragged = false;
+
+    const hydrate = (i: number) => {
+      const slide = slides[i];
+      if (!slide || slide.src) return;
+      slide.sizes = '92vw';
+      slide.srcset = slide.dataset.srcset ?? '';
+      slide.src = slide.dataset.src ?? '';
+    };
+
+    const offset = (value: number) => track.style.setProperty('--slide', String(value));
+
+    const go = (target: number) => {
+      index = Math.min(Math.max(target, 0), last);
+      offset(index);
+
+      caption.textContent = slides[index].alt;
+      counter.textContent = `${index + 1} / ${slides.length}`;
+      prev.disabled = index === 0;
+      next.disabled = index === last;
+
+      hydrate(index);
+      hydrate(index - 1);
+      hydrate(index + 1);
+    };
+
+    triggers.forEach((trigger) =>
+      trigger.addEventListener('click', () => {
+        opener = trigger;
+        track.dataset.dragging = '';
+        go(Number(trigger.dataset.index));
+        dialog.showModal();
+        track.getBoundingClientRect();
+        delete track.dataset.dragging;
+        document.body.style.overflow = 'hidden';
+      })
+    );
+
+    dialog.addEventListener('close', () => {
+      document.body.style.overflow = '';
+      opener?.focus();
+    });
+
+    dialog.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') {
+        event.preventDefault();
+        go(index + 1);
+      }
+      if (event.key === 'ArrowLeft') {
+        event.preventDefault();
+        go(index - 1);
+      }
+    });
+
+    viewport.addEventListener('pointerdown', (event) => {
+      if (event.button !== 0) return;
+      dragFrom = event.clientX;
+      dragWidth = viewport.clientWidth || 1;
+      dragged = false;
+      track.dataset.dragging = '';
+    });
+
+    window.addEventListener('pointermove', (event) => {
+      if (dragFrom === null) return;
+      const travelled = (event.clientX - dragFrom) / dragWidth;
+      if (Math.abs(travelled) * dragWidth > 6) dragged = true;
+      offset(Math.min(Math.max(index - travelled, -0.15), last + 0.15));
+    });
+
+    const endDrag = (event: PointerEvent) => {
+      if (dragFrom === null) return;
+      const travelled = (event.clientX - dragFrom) / dragWidth;
+      dragFrom = null;
+      delete track.dataset.dragging;
+      go(index + (Math.abs(travelled) > 0.12 ? (travelled < 0 ? 1 : -1) : 0));
+    };
+
+    window.addEventListener('pointerup', endDrag);
+    window.addEventListener('pointercancel', endDrag);
+
+    stage.addEventListener('click', (event) => {
+      if (dragged) {
+        dragged = false;
+        return;
+      }
+      const target = event.target as HTMLElement;
+      if (target === stage || target === viewport || frames.includes(target)) dialog.close();
+    });
+
+    document.querySelector('#shot-modal-close')?.addEventListener('click', () => dialog.close());
+    prev.addEventListener('click', () => go(index - 1));
+    next.addEventListener('click', () => go(index + 1));
+  }
+</script>

@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import PillButton from '../components/PillButton.astro';
+
+/**
+ * El 404.html viejo hacía `window.location.replace('index.html')` más un
+ * meta refresh. Eso descarta la URL que la persona intentó abrir, así que
+ * nunca sabés qué link estaba roto, y los crawlers lo leen como un soft 404.
+ * Esta página devuelve el 404 de verdad y ofrece la salida.
+ */
+---
+
+<Base title="Page not found — Lisandro Pat" description="This page doesn't exist." noindex>
+  <section class="flex min-h-[70vh] flex-col items-center justify-center px-[20px] text-center">
+    <p class="text-[21px] font-normal">404</p>
+    <h2 class="mt-[20px] text-[42px] leading-[1.1] font-light lg:text-[64px]">
+      This page doesn't exist
+    </h2>
+    <p class="text-grayc mt-[21px] text-[21px]">
+      The link may be outdated, or the page may have moved.
+    </p>
+    <div class="mt-[48px]">
+      <PillButton href="/">Back to the homepage</PillButton>
+    </div>
+  </section>
+</Base>

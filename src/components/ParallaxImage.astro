@@ -1,0 +1,20 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  src: ImageMetadata;
+  alt: string;
+  class?: string;
+  widths?: number[];
+  sizes?: string;
+}
+
+const { src, alt, class: className = '', widths, sizes } = Astro.props;
+---
+
+<div class:list={['parallax-clip', className]}>
+  <div class="parallax-inner">
+    <Image src={src} alt={alt} widths={widths} sizes={sizes} class="w-full scale-150" />
+  </div>
+</div>

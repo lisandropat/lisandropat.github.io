@@ -1,0 +1,83 @@
+---
+import { Image } from 'astro:assets';
+import clip from '../assets/clip.png';
+
+const year = new Date().getFullYear();
+
+const MAIL = 'lisandropat@gmail.com';
+const LINKEDIN = 'https://www.linkedin.com/in/lisandropat/';
+const BEHANCE = 'https://www.behance.net/lisandropat';
+const GITHUB = 'https://github.com/lisandropat';
+---
+
+<div class="footer-spacer" aria-hidden="true"></div>
+
+<footer class="reveal-footer footer-tint overflow-hidden bg-black text-center">
+  <div class="relative mx-auto max-w-[1080px] px-[10px] pt-[12vh]">
+    <div
+      class="mb-[10vh] text-center text-[32px] text-white lg:mb-[20vh] lg:text-left lg:text-[76px] tracking-[-0.05em]"
+    >
+      <p class="lg:mb-[-25px]">Let's build your ideas</p>
+      <a href={`mailto:${MAIL}`}>
+        <span class="line-rail-white">
+          <span class="line-grow-white font-extralight">{MAIL}</span>
+        </span>
+      </a>
+    </div>
+
+    <div class="w-full justify-between text-center lg:flex lg:text-left">
+      <div class="mx-auto mb-[40px] max-w-[300px] lg:mx-0">
+        <Image
+          src={clip}
+          alt="Lisandro"
+          title="😎"
+          width={140}
+          height={140}
+          class="mx-auto w-[70px] rounded-full lg:mx-0"
+        />
+        <p class="text-grayc mt-[20px] text-center text-[14px] lg:text-left">
+          Website design and <a href={GITHUB} target="_blank" rel="noopener" class="underline"
+            >dev by me</a
+          >
+          <span class="mt-[20px] block text-white">Last update in {year}</span>
+        </p>
+      </div>
+
+      <div
+        class="mt-[60px] flex w-full justify-around text-left text-[20px] text-white lg:w-[25vw] lg:justify-between"
+      >
+        <a href={LINKEDIN} target="_blank" rel="noopener"
+          ><span class="line-grow-white">LinkedIn</span></a
+        >
+        <a href={BEHANCE} target="_blank" rel="noopener"
+          ><span class="line-grow-white">Behance</span></a
+        >
+        <a href={GITHUB} target="_blank" rel="noopener"
+          ><span class="line-grow-white">GitHub</span></a
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  @keyframes footer-tint-in {
+    from {
+      opacity: 0;
+      background-color: #fff;
+    }
+    to {
+      opacity: 1;
+      background-color: #000;
+    }
+  }
+
+  @supports (animation-timeline: scroll()) {
+    .footer-tint {
+      animation: footer-tint-in linear both;
+      animation-duration: 1ms;
+      animation-timeline: scroll(root block);
+      animation-range: 0 100vh;
+    }
+  }
+</style>

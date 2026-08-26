@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import cover from '../assets/shots/Shot-12.jpg';
+---
+
+<section class="image-runway relative [--m:20px] [--r:0px] lg:[--m:64px] fadeIn animation-delay-500ms">
+  <div class="sticky top-0 h-screen">
+    <div class="image-frame absolute inset-0">
+      <Image
+        src={cover}
+        alt=""
+        widths={[720, 1280, 1528]}
+        sizes="100vw"
+        class="image-media absolute inset-0 h-full w-full object-cover"
+      />
+      <div class="absolute inset-0 bg-black/25"></div>
+      <div
+        class="image-content absolute inset-0"
+      >
+        Aquí va el texto que quiero que aparezca sobre la imagen, y que se vea bien en todos los tamaños de pantalla.
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .image-runway {
+    --runway: 200vh;
+  }
+
+  .image-frame {
+    clip-path: inset(0 0 0 0 round 0);
+  }
+
+  @keyframes image-frame-open {
+    from {
+      clip-path: inset(0 var(--m) 0 var(--m) round var(--r));
+    }
+    to {
+      clip-path: inset(0 0 0 0 round 0);
+    }
+  }
+
+  @keyframes image-media-settle {
+    from {
+      scale: 1.12;
+    }
+    to {
+      scale: 1;
+    }
+  }
+
+  @keyframes image-content-in {
+    from {
+      opacity: 0;
+      scale: 1.06;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .image-runway {
+        height: var(--runway);
+        view-timeline-name: --image-tl;
+        view-timeline-axis: block;
+      }
+
+      .image-frame,
+      .image-media,
+      .image-content {
+        animation-duration: 1ms;
+        animation-timing-function: linear;
+        animation-fill-mode: both;
+        animation-timeline: --image-tl;
+      }
+
+      .image-frame {
+        animation-name: image-frame-open;
+        animation-range: cover 0% contain 0%;
+      }
+
+      .image-media {
+        animation-name: image-media-settle;
+        animation-range: cover 0% contain 0%;
+      }
+
+      .image-content {
+        animation-name: image-content-in;
+        animation-range: cover 0% contain 0%;
+      }
+    }
+  }
+</style>

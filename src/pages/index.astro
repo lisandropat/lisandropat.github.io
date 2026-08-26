@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro';
+
+import Hero from '../components/Hero.astro';
+import FeaturedProject from '../components/FeaturedProject.astro';
+import ShotsGallery from '../components/ShotsGallery.astro';
+import PillButton from '../components/PillButton.astro';
+import BrandMarquee from '../components/BrandMarquee.astro';
+import AvailabilityBar from '../components/AvailabilityBar.astro';
+import ExpandingImage from '../components/ExpandingImage.astro';
+
+import { featured, behanceCollection } from '../data/projects';
+---
+
+<Base
+  title="Lisandro Pat — Designer"
+  description="Lisandro is an experienced product designer living in Argentina. He creates dynamic experiences with motion, 3D, and various creative disciplines."
+  active="work"
+  bodyId="landing"
+>
+  <Hero />
+  
+  {/* <ExpandingImage />*/}
+
+  <!-- Featured projects -->
+  <section
+    class="relative mx-auto max-w-full px-[20px] text-left md:max-w-[700px] lg:max-w-[1100px] lg:px-0 my-[96px] lg:my-[128px]"
+  >
+    <h4 id="work" class="mb-[48px] scroll-mt-[100px] text-[16px] font-normal lg:mb-[10vh] opacity-40">
+      Favourite projects
+    </h4>
+
+    {featured.map((project, i) => <FeaturedProject project={project} spaced={i > 0} />)}
+
+    <div class="mt-[60px] mb-[60px] text-center">
+      <PillButton href={behanceCollection}>View more projects</PillButton>
+    </div>
+  </section>
+
+  <BrandMarquee class="my-[142px] opacity-25" />
+
+  <!-- The type of designer -->
+  <section
+    class="relative mx-auto max-w-full px-[20px] md:max-w-[700px] lg:max-w-[1100px] xl:px-0 mt-[186px] mb-[96px]"
+  >
+      <h3 class="text-[36px] text-left font-normal lg:text-[42px] tracking-[-2px] leading-[110%] lg:leading-[140%] lg:max-w-[60vw]">
+        The type of designer who's obsessed with making things harmonic, simple and obvious
+      </h3>
+  </section>
+
+  <ShotsGallery />
+
+  <section
+    class="mx-auto max-w-full text-left px-[20px] md:max-w-[700px] lg:max-w-[1100px] xl:px-0 mt-[96px] mb-[240px] text-[21px] font-light"
+  >
+    <p>
+      I like to keep my workflow clean and organized, approaching design in a systematic and
+      minimalistic way, emphasizing the maintenance and scalability of every visual language I
+      develop. I pay careful attention to the smallest details, making sure that each element
+      harmonizes with the overall visual identity.
+    </p>
+    <div class="project-group">
+      <a class="mt-[48px] text-[16px] case-link" href="/about">Read more about me ⎯</a>
+    </div>
+
+  </section>
+
+  <AvailabilityBar visible={false} />
+</Base>

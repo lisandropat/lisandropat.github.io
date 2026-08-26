@@ -1,0 +1,103 @@
+---
+
+interface Props {
+  active?: 'work' | 'about';
+}
+const { active } = Astro.props;
+
+const MAIL = 'lisandropat@gmail.com';
+const LINKEDIN = 'https://www.linkedin.com/in/lisandropat/';
+const BEHANCE = 'https://www.behance.net/lisandropat';
+---
+
+<nav>
+  <a href="/">
+    <h1
+      class="fadeIn absolute top-[21px] left-[20px] z-10 text-[21px] font-normal lg:top-[60px] xl:left-[64px] min-lg:tracking-[-1px]"
+    >
+      Lisandro Pat
+    </h1>
+  </a>
+
+  <div
+    class="fadeIn absolute top-[20px] right-[80px] z-[4] lg:top-[62px] lg:right-[118px]"
+    aria-hidden="true"
+  >
+    <span class="text-[20px]">menu</span>
+  </div>
+
+  <div class="fadeIn fixed top-0 right-0 z-[41]">
+    <button
+      type="button"
+      id="menu-toggle"
+      class="menu-toggle closed relative top-[-2px] right-[4px] h-[80px] w-[130px] cursor-pointer border-0 bg-transparent p-0 lg:top-[40px] lg:right-[40px]"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="drawer"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="circle"><span class="fill"></span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="drawer-overlay" id="drawer-overlay"></div>
+
+<aside class="drawer" id="drawer" aria-label="Site menu">
+  <div class="relative h-full">
+    <div class="absolute top-1/2 left-[20px] flex -translate-y-[70%] md:left-[6vw]">
+      <div class="hidden lg:block">
+        <p class="text-muted mb-[30px]">Social</p>
+        <a href={LINKEDIN} target="_blank" rel="noopener">
+          <span class="line-grow block text-[16px]">LinkedIn</span>
+        </a><br/>
+        <a href={BEHANCE} target="_blank" rel="noopener">
+          <span class="line-grow mt-[20px] block text-[16px]">Behance</span>
+        </a>
+      </div>
+
+      <div class="lg:ml-[110px]">
+        <p class="text-muted mb-[14px] text-[16px]">Menu</p>
+        <div class="flex flex-col gap-[12px]">
+          <a href="/#work">
+            <span class:list={['line-grow menu-link block min-lg:tracking-[-2px]', active === 'work' && 'active']}>Work</span>
+          </a>
+          <a href="/about">
+            <span class:list={['line-grow menu-link mt-[-14px] block min-lg:tracking-[-2px]', active === 'about' && 'active']}>About</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="absolute bottom-[60px] left-[6vw]">
+      <p class="text-muted mb-[6px] text-[16px]">Get in touch</p>
+      <a href={`mailto:${MAIL}`}>
+        <span class="line-rail"><span class="line-grow text-[16px]">{MAIL}</span></span>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const drawer = document.getElementById('drawer');
+  const overlay = document.getElementById('drawer-overlay');
+
+  if (toggle && drawer) {
+    const setState = (isOpen: boolean) => {
+      toggle.classList.toggle('open', isOpen);
+      toggle.classList.toggle('closed', !isOpen);
+      drawer.classList.toggle('open', isOpen);
+      overlay?.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      toggle.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+    };
+
+    toggle.addEventListener('click', () => setState(!drawer.classList.contains('open')));
+    overlay?.addEventListener('click', () => setState(false));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') setState(false);
+    });
+  }
+</script>

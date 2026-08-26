@@ -1,0 +1,51 @@
+<div class="min-md:absolute grid h-64 w-64 place-items-center mx-auto text-neutral-900 scale-[0.6] min-md:scale-[0.8] right-[-24px] bottom-[0px]">
+
+        <svg viewBox="0 0 300 300" aria-hidden="true"
+            class="absolute inset-0 h-full w-full animate-spin [animation-duration:20s] [animation-direction:reverse] motion-reduce:animate-none">
+          <defs>
+            <path id="circle-text-path"
+                  d="M 150,150 m -112,0 a 112,112 0 1,1 224,0 a 112,112 0 1,1 -224,0" />
+          </defs>
+          <text class="fill-current text-[19px] font-medium">
+            <textPath href="#circle-text-path" startOffset="0" textLength="704" lengthAdjust="spacing">Every great design begins with an even better story&nbsp;•&nbsp;</textPath>
+          </text>
+        </svg>
+
+        <svg width="100%" viewBox="0 0 680 400" role="img" xmlns="http://www.w3.org/2000/svg">
+            <g transform="translate(140,0)">
+            <g id="sq">
+            <g transform="rotate(-45 200 200)">
+            <rect class="e" x="167.22" y="110.65" width="0" height="9" rx="4.5" style="animation-name:c1"/>
+            <rect class="e" x="252.07" y="195.5" width="0" height="9" rx="4.5" style="animation-name:c2"/>
+            <rect class="e" x="167.22" y="280.35" width="0" height="9" rx="4.5" style="animation-name:c3"/>
+            </g>
+            <rect class="e" x="157.5" y="113.5" width="0" height="9" rx="4.5" style="animation-name:b1"/>
+            <rect class="e" x="277.5" y="113.5" width="9" height="0" rx="4.5" style="animation-name:b2"/>
+            <rect class="e" x="125.5" y="125.5" width="9" height="149" rx="4.5" style="animation-name:eL"/>
+            <rect class="e" x="125.5" y="125.5" width="149" height="9" rx="4.5" style="animation-name:eT"/>
+            <rect class="e" x="265.5" y="125.5" width="9" height="149" rx="4.5" style="animation-name:eR"/>
+            <rect class="e" x="125.5" y="265.5" width="149" height="9" rx="4.5" style="animation-name:eB"/>
+            </g>
+            </g>
+        </svg>
+
+        <span class="sr-only">Every great design begins with an even better story</span>
+      </div>
+
+<style>
+    .e{fill:#000;animation-duration:7s;animation-iteration-count:infinite}
+    #sq{transform-origin:200px 200px;animation:squash 7s cubic-bezier(.45,.05,.55,.95) infinite}
+    @keyframes squash{0%,10%{transform:scale(1,1)}20%{transform:scale(1.06,.94)}31%{transform:scale(.98,1.02)}42%{transform:scale(1,1)}53%{transform:scale(.94,1.06)}66%{transform:scale(1.02,.98)}78%{transform:scale(1,1)}89%{transform:scale(1.05,1.05)}100%{transform:scale(1,1)}}
+    @keyframes eT{0%,12%{x:125.5px;y:125.5px;width:149px;animation-timing-function:cubic-bezier(.3,1.7,.62,1)}30%,45%{x:115.5px;y:155.5px;width:129px;animation-timing-function:cubic-bezier(.3,1.7,.62,1)}63%,80%{x:80.5px;y:130.5px;width:189px;animation-timing-function:cubic-bezier(.3,1.7,.62,1)}98%,100%{x:125.5px;y:125.5px;width:149px}}
+    @keyframes eB{0%,14%{x:125.5px;y:265.5px;width:149px;animation-timing-function:cubic-bezier(.3,1.7,.62,1)}33%,47%{x:115.5px;y:275.5px;width:129px;animation-timing-function:cubic-bezier(.3,1.7,.62,1)}66%,82%{x:130.5px;y:260.5px;width:189px;animation-timing-function:cubic-bezier(.3,1.7,.62,1)}100%{x:125.5px;y:265.5px;width:149px}}
+    @keyframes eL{0%,12%{x:125.5px;y:125.5px;height:149px;animation-timing-function:cubic-bezier(.34,1.62,.6,1)}30%,45%{x:115.5px;y:155.5px;height:129px;animation-timing-function:cubic-bezier(.34,1.62,.6,1)}63%,80%{x:130.5px;y:80.5px;height:189px;animation-timing-function:cubic-bezier(.34,1.62,.6,1)}98%,100%{x:125.5px;y:125.5px;height:149px}}
+    @keyframes eR{0%,14%{x:265.5px;y:125.5px;height:149px;animation-timing-function:cubic-bezier(.34,1.62,.6,1)}33%,47%{x:235.5px;y:155.5px;height:129px;animation-timing-function:cubic-bezier(.34,1.62,.6,1)}66%,82%{x:260.5px;y:130.5px;height:189px;animation-timing-function:cubic-bezier(.34,1.62,.6,1)}100%{x:265.5px;y:125.5px;height:149px}}
+    @keyframes c1{0%,13%{width:.01px;animation-timing-function:cubic-bezier(.2,1.8,.5,1)}31%,46%{width:68.4px;animation-timing-function:cubic-bezier(.6,-.4,.7,1)}60%,100%{width:.01px}}
+    @keyframes c2{0%,14%{width:.01px;animation-timing-function:cubic-bezier(.2,1.8,.5,1)}32%,46%{width:68.4px;animation-timing-function:cubic-bezier(.6,-.4,.7,1)}59%,100%{width:.01px}}
+    @keyframes c3{0%,15%{width:.01px;animation-timing-function:cubic-bezier(.2,1.8,.5,1)}33%,46%{width:68.4px;animation-timing-function:cubic-bezier(.6,-.4,.7,1)}58%,100%{width:.01px}}
+    @keyframes b1{0%,17%{width:.01px;animation-timing-function:cubic-bezier(.2,1.75,.5,1)}35%,46%{width:129px;animation-timing-function:cubic-bezier(.6,-.4,.7,1)}56%,100%{width:.01px}}
+    @keyframes b2{0%,19%{height:.01px;animation-timing-function:cubic-bezier(.2,1.75,.5,1)}37%,46%{height:129px;animation-timing-function:cubic-bezier(.6,-.4,.7,1)}55%,100%{height:.01px}}
+    @keyframes t1{0%,10%{opacity:.55}22%,100%{opacity:0}}
+    @keyframes t2{0%,26%{opacity:0}36%,44%{opacity:.55}54%,100%{opacity:0}}
+    @keyframes t3{0%,60%{opacity:0}68%,78%{opacity:.55}88%,100%{opacity:0}}
+</style>

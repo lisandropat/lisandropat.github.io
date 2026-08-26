@@ -1,0 +1,63 @@
+---
+import { Image } from 'astro:assets';
+import burtonLogo from '../assets/brands/Burton.png';
+import yetiLogo from '../assets/brands/YETI.png';
+import dsgLogo from '../assets/brands/DSG.png';
+import eddieBauerLogo from '../assets/brands/Eddie-Bauer.png';
+import mbgLogo from '../assets/brands/mindbodygreen.png';
+
+interface Props {
+  copies?: number;
+  class?: string;
+}
+
+const { copies = 6, class: className = '' } = Astro.props;
+
+const brands = [
+  { src: burtonLogo, alt: 'Burton', class: 'w-[90px] lg:w-[110px]' },
+  { src: yetiLogo, alt: 'YETI', class: 'w-[40px] lg:w-[60px]' },
+  { src: dsgLogo, alt: 'DSG', class: 'w-[50px] lg:w-[70px]' },
+  { src: eddieBauerLogo, alt: 'Eddie Bauer', class: 'w-[90px] lg:w-[110px]' },
+  { src: mbgLogo, alt: 'MindBodyGreen', class: 'w-[90px] lg:w-[110px]' },
+];
+
+const groups = Array.from({ length: copies }, (_, i) => i);
+---
+
+<div
+  class:list={[
+    'group flex overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_6%,black_94%,transparent)]',
+    className,
+  ]}
+  aria-label="Brands I have worked with"
+>
+  {
+    groups.map((group) => (
+      <ul
+        role="list"
+        aria-hidden={group > 0 ? 'true' : undefined}
+        class="flex shrink-0 animate-[marquee_18s_linear_infinite] items-center gap-[12px] pr-[12px] motion-reduce:animate-none lg:gap-[30px] lg:pr-[30px]"
+      >
+        {brands.map((brand) => (
+          <li class="shrink-0">
+            <Image
+              src={brand.src}
+              alt={group === 0 ? brand.alt : ''}
+              widths={[110, 220]}
+              sizes="110px"
+              class:list={['h-auto', brand.class]}
+            />
+          </li>
+        ))}
+      </ul>
+    ))
+  }
+</div>
+
+<style>
+  @keyframes marquee {
+    to {
+      transform: translateX(-100%);
+    }
+  }
+</style>

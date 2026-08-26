@@ -1,0 +1,69 @@
+---
+import ParallaxImage from './ParallaxImage.astro';
+import type { FeaturedProject } from '../data/projects';
+
+interface Props {
+  project: FeaturedProject;
+  spaced?: boolean;
+}
+
+const { project, spaced = false } = Astro.props;
+const { name, tags, tagline, image, href, imageSide } = project;
+
+const imageRight = imageSide === 'right';
+
+const clipClass = [
+  'relative h-[60vh] w-[110vw] -ml-[10vw] md:ml-0 md:w-full',
+  'lg:absolute lg:h-[94vh] lg:w-[42%]',
+  imageRight && 'lg:right-0',
+]
+  .filter(Boolean)
+  .join(' ');
+
+const textClass = [
+  'mt-[40px] lg:mt-0 lg:absolute lg:top-1/2 lg:-translate-y-[90%]',
+  !imageRight && 'lg:right-[6.5%]',
+];
+---
+
+<a href={href} target="_blank" rel="noopener">
+  <div class:list={['project-group relative lg:h-screen', spaced && 'mt-[80px]']}>
+    <ParallaxImage
+      src={image}
+      alt={name}
+      class={clipClass}
+      widths={[540, 1080]}
+      sizes="(max-width: 992px) 110vw, 42vw"
+    />
+
+    <div class:list={textClass}>
+
+      <p class="lg:text-[21px]">{name}</p>
+
+      <p
+        class="mt-[14px] text-[21px] lg:mt-[30px] lg:text-[36px] lg:leading-[133%] min-lg:tracking-[-2px]"
+      >
+        {
+          tagline.map((line, i) => (
+            <>
+              {i > 0 && <br />}
+              {line}
+            </>
+          ))
+        }
+      </p>
+
+      <ul class="mt-[24px] mb-[48px] flex flex-wrap gap-[4px]">
+        {
+          tags.map((tag) => (
+            <li class="border-hairline rounded-full border px-[12px] py-[4px] text-[12px]">
+              {tag}
+            </li>
+          ))
+        }
+      </ul>
+
+      <p class="mt-[21px] text-[16px]"><span class="case-link">Read case study ⎯</span></p>
+    </div>
+  </div>
+</a>

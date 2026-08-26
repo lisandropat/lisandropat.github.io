@@ -1,0 +1,83 @@
+---
+import { Font } from 'astro:assets';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ScrollTop from '../components/ScrollTop.astro';
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Marca el link activo en el menú. */
+  active?: 'work' | 'about';
+  /** Para el <body id>, que el CSS viejo usaba como hook por página. */
+  bodyId?: string;
+  noindex?: boolean;
+}
+
+const { title, description, active, bodyId, noindex = false } = Astro.props;
+
+// Astro.site viene de astro.config.mjs. Estas URLs tienen que ser absolutas:
+// Open Graph ignora los paths relativos, que es la razón por la que el sitio
+// actual no muestra preview al compartirlo.
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/og.jpg', Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={noindex ? 'noindex' : 'index, follow'} />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <Font cssVariable="--font-main" preload />
+
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'Person',
+        name: 'Lisandro Pat',
+        jobTitle: 'UX/UI Designer',
+        email: 'mailto:lisandropat@gmail.com',
+        url: 'https://lisandropat.com/',
+        sameAs: [
+          'https://www.behance.net/lisandropat',
+          'https://www.linkedin.com/in/lisandropat/',
+          'https://github.com/lisandropat',
+        ],
+      })}
+    />
+  </head>
+
+  <body id={bodyId}>
+    <Header active={active} />
+
+    <main class="relative z-[2] bg-white text-center">
+      <slot />
+    </main>
+
+    <Footer />
+    <ScrollTop />
+  </body>
+</html>
