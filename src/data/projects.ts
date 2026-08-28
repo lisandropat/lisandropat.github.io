@@ -1,6 +1,6 @@
 import type { ImageMetadata } from 'astro';
-import burton from '../assets/projects/burton.jpg';
-import elatamtv from '../assets/projects/elatamtv.jpg';
+import first from '../assets/projects/burton.jpg';
+import second from '../assets/projects/nova.jpg';
 
 export type FeaturedProject = {
   name: string;
@@ -16,16 +16,16 @@ export const featured: FeaturedProject[] = [
     name: 'Burton Rentals',
     tags: ['UX/UI Design', 'Development'],
     tagline: ['Get premium gear', 'at a fraction of the price'],
-    image: burton,
+    image: first,
     href: 'https://www.behance.net/gallery/165910833/Burton-Rentals-Ecommerce-UIUX-Design',
     imageSide: 'right',
   },
   {
-    name: 'eLatamTV',
-    tags: ['UX/UI Design', 'Branding'],
-    tagline: ['Tracking all Esports', 'in a single platform'],
-    image: elatamtv,
-    href: 'https://www.behance.net/gallery/125267739/eLatamTV-UXUI-Esports-Gaming-Platform',
+    name: 'Nova Platform',
+    tags: ['UX/UI Design'],
+    tagline: ['The next level platform', 'for mechanics'],
+    image: second,
+    href: 'https://www.behance.net/gallery/211053205/NOVA-Platform-UIUX-Brand-Identity',
     imageSide: 'left',
   },
 ];
