@@ -20,26 +20,24 @@ const RESUME =
   bodyId="about"
 >
 
-  <section class="circle-runway relative [--dot:120px]">
-    <div class="sticky top-0 h-screen">
-      <div class="circle-frame absolute inset-0">
-        <Image
-          src={cover}
-          alt=""
-          loading="eager"
-          fetchpriority="high"
-          widths={[720, 1080]}
-          sizes="100vw"
-          class="circle-media absolute inset-0 h-full w-full object-cover"
-        />
-        <div class="circle-grain" aria-hidden="true"></div>
-        <div class="circle-flicker" aria-hidden="true"></div>
-      </div>
+  <section class="circle-runway relative [--dot:120px] max-lg:-mt-[120px]">
+    <div class="circle-frame absolute inset-0">
+      <Image
+        src={cover}
+        alt=""
+        loading="eager"
+        fetchpriority="high"
+        widths={[720, 1080]}
+        sizes="100vw"
+        class="circle-media absolute inset-0 h-full w-full object-cover"
+      />
+      <div class="circle-grain" aria-hidden="true"></div>
+      <div class="circle-flicker" aria-hidden="true"></div>
     </div>
   </section>
 
   <section
-    class="relative mx-auto max-w-full px-[20px] md:max-w-[700px] lg:max-w-[1100px] xl:px-0 -mt-[186px]"
+    class="relative mx-auto max-w-full px-[20px] md:max-w-[700px] lg:max-w-[1100px] xl:px-0 -mt-[186px] max-lg:-mt-[220px]"
   >
     <div class="center">
       <p
@@ -106,13 +104,7 @@ const RESUME =
   .circle-runway {
     --runway: 110vh;
     --ease: cubic-bezier(.17,0,.46,1);
-    --dot-start: 50vmin;
-  }
-
-  @media (min-width: 1024px) {
-    .circle-runway {
-      --dot-start: 40vmin;
-    }
+    --dot-start: 40vmin;
   }
 
   .circle-frame {
@@ -188,10 +180,10 @@ const RESUME =
 
   @keyframes circle-pullback {
     from {
-      scale: .6;
+      scale: .4;
     }
     to {
-      scale: .4;
+      scale: .5;
     }
   }
 
