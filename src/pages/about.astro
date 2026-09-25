@@ -20,16 +20,16 @@ const RESUME =
   bodyId="about"
 >
 
-  <section class="circle-runway relative [--dot:120px] max-lg:-mt-[120px]">
-    <div class="circle-frame absolute inset-0">
+  <section class="circle-runway relative [--dot:120px] max-md:-mt-[56px]">
+    <div class="circle-frame relative h-[80svh] overflow-hidden">
       <Image
         src={cover}
         alt=""
         loading="eager"
         fetchpriority="high"
-        widths={[720, 1080]}
-        sizes="100vw"
-        class="circle-media absolute inset-0 h-full w-full object-cover"
+        widths={[720, 1080, 1440]}
+        sizes="max(40vmin, 360px)"
+        class="circle-media absolute left-1/2 top-1/2 h-[var(--dot-start)] w-[var(--dot-start)] object-cover [translate:-50%_-50%]"
       />
       <div class="circle-grain" aria-hidden="true"></div>
       <div class="circle-flicker" aria-hidden="true"></div>
@@ -37,7 +37,7 @@ const RESUME =
   </section>
 
   <section
-    class="relative mx-auto max-w-full px-[20px] md:max-w-[700px] lg:max-w-[1100px] xl:px-0 -mt-[186px] max-lg:-mt-[220px]"
+    class="relative mx-auto max-w-full px-[20px] md:max-w-[700px] lg:max-w-[1100px] xl:px-0 max-md:-mt-[124px] md:-mt-[64px]"
   >
     <div class="center">
       <p
@@ -102,15 +102,15 @@ const RESUME =
 
 <style>
   .circle-runway {
-    --runway: 110vh;
     --ease: cubic-bezier(.17,0,.46,1);
     --dot-start: 40vmin;
   }
 
   .circle-frame {
     clip-path: inset(
-      calc(50% - var(--dot-start, 60vmin) / 2) calc(50% - var(--dot-start, 60vmin) / 2) calc(50% - var(--dot-start, 60vmin) / 2)
-        calc(50% - var(--dot-start, 60vmin) / 2) round calc(var(--dot-start, 60vmin) / 2)
+      calc(50% - var(--dot-start) / 2) calc(50% - var(--dot-start) / 2)
+      calc(50% - var(--dot-start) / 2) calc(50% - var(--dot-start) / 2)
+      round calc(var(--dot-start) / 2)
     );
   }
 
@@ -166,26 +166,32 @@ const RESUME =
   @keyframes circle-shrink {
     from {
       clip-path: inset(
-        calc(50% - var(--dot-start, 60vmin) / 2) calc(50% - var(--dot-start, 60vmin) / 2) calc(50% - var(--dot-start, 60vmin) / 2)
-          calc(50% - var(--dot-start, 60vmin) / 2) round calc(var(--dot-start, 60vmin) / 2)
+        calc(50% - var(--dot-start) / 2) calc(50% - var(--dot-start) / 2)
+        calc(50% - var(--dot-start) / 2) calc(50% - var(--dot-start) / 2)
+        round calc(var(--dot-start) / 2)
       );
     }
     to {
       clip-path: inset(
-        calc(50% - var(--dot) / 2) calc(50% - var(--dot) / 2) calc(50% - var(--dot) / 2)
-          calc(50% - var(--dot) / 2) round calc(var(--dot) / 2)
+        calc(50% + var(--dot-start) / 2 - var(--dot)) calc(50% - var(--dot) / 2)
+        calc(50% - var(--dot-start) / 2) calc(50% - var(--dot) / 2)
+        round calc(var(--dot) / 2)
       );
     }
   }
 
   @keyframes circle-pullback {
-    from {
-      scale: .4;
-    }
-    to {
-      scale: .5;
-    }
+  from {
+    width: var(--dot-start);
+    height: var(--dot-start);
+    translate: -50% -50%;
   }
+  to {
+    width: calc(var(--dot) * 3);
+    height: calc(var(--dot) * 3);
+    translate: -50% calc(-50% + (var(--dot-start) - var(--dot)) / 2);
+  }
+}
 
   @media (prefers-reduced-motion: reduce) {
     .circle-grain,
@@ -194,30 +200,23 @@ const RESUME =
     }
   }
 
-  @supports (animation-timeline: view()) {
-    @media (prefers-reduced-motion: no-preference) {
-      .circle-runway {
-        height: var(--runway);
-        view-timeline-name: --circle-tl;
-        view-timeline-axis: block;
-      }
-
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) and (min-width: 1024px) {
       .circle-frame,
       .circle-media {
         animation-duration: 1ms;
         animation-timing-function: var(--ease);
         animation-fill-mode: both;
-        animation-timeline: --circle-tl;
+        animation-timeline: scroll(root block);
+        animation-range: 0 30svh;
       }
 
       .circle-frame {
         animation-name: circle-shrink;
-        animation-range: contain 0px contain 100%;
       }
 
       .circle-media {
         animation-name: circle-pullback;
-        animation-range: contain 0px contain 100%;
       }
     }
   }
