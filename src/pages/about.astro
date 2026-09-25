@@ -20,7 +20,7 @@ const RESUME =
   bodyId="about"
 >
 
-  <section class="circle-runway relative [--dot:120px] [--m:20px] lg:[--m:64px] [--r:0px] mt-[96px]">
+  <section class="circle-runway relative [--dot:120px]">
     <div class="sticky top-0 h-screen">
       <div class="circle-frame absolute inset-0">
         <Image
@@ -104,12 +104,22 @@ const RESUME =
 
 <style>
   .circle-runway {
-    --runway: 120vh;
+    --runway: 110vh;
     --ease: cubic-bezier(.17,0,.46,1);
+    --dot-start: 50vmin;
+  }
+
+  @media (min-width: 1024px) {
+    .circle-runway {
+      --dot-start: 40vmin;
+    }
   }
 
   .circle-frame {
-    clip-path: inset(var(--m) var(--m) 0 var(--m) round var(--r));
+    clip-path: inset(
+      calc(50% - var(--dot-start, 60vmin) / 2) calc(50% - var(--dot-start, 60vmin) / 2) calc(50% - var(--dot-start, 60vmin) / 2)
+        calc(50% - var(--dot-start, 60vmin) / 2) round calc(var(--dot-start, 60vmin) / 2)
+    );
   }
 
   .circle-grain {
@@ -163,7 +173,10 @@ const RESUME =
 
   @keyframes circle-shrink {
     from {
-      clip-path: inset(var(--m) var(--m) 0 var(--m) round var(--r));
+      clip-path: inset(
+        calc(50% - var(--dot-start, 60vmin) / 2) calc(50% - var(--dot-start, 60vmin) / 2) calc(50% - var(--dot-start, 60vmin) / 2)
+          calc(50% - var(--dot-start, 60vmin) / 2) round calc(var(--dot-start, 60vmin) / 2)
+      );
     }
     to {
       clip-path: inset(
@@ -175,10 +188,10 @@ const RESUME =
 
   @keyframes circle-pullback {
     from {
-      scale: 1;
+      scale: .6;
     }
     to {
-      scale: 0.50;
+      scale: .4;
     }
   }
 
@@ -207,12 +220,12 @@ const RESUME =
 
       .circle-frame {
         animation-name: circle-shrink;
-        animation-range: contain -96px contain 100%;
+        animation-range: contain 0px contain 100%;
       }
 
       .circle-media {
         animation-name: circle-pullback;
-        animation-range: contain -96px contain 100%;
+        animation-range: contain 0px contain 100%;
       }
     }
   }
